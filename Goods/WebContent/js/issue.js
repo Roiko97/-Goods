@@ -1,7 +1,7 @@
 function formPush() {
     const title = $('#title').val();
     const content = $('#content').val();
-    const url = $('#sort').val() == 0?"WritingLostAndFoundServlet":"WritingCommunicationServlet";
+    const url = $('#sort').val() == 0?"WritingLostAndFoundServlet":"WritingLostAndFoundServlet";
     const date = new Date();
     const year = date.getUTCFullYear();
     const month = date.getUTCMonth();
@@ -13,10 +13,15 @@ function formPush() {
     map.set("releasetime",time);
     map.set("pagecontect",content);
     $.ajax({
-        url:url,
+        url:"WritingLostAndFoundServlet",
         type:"post",
         dataType:"json",
-        data:map,
+        data:{
+            "title":title,
+            "nickname":"damu",
+            "releasetime":time,
+            "pagecontect":content,
+        },
         success:function(res){
             location:href = "communication.jsp";
         },
