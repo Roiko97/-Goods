@@ -18,7 +18,46 @@ body {
 .left-part ul li{
     color: black;
 }
+.right-part{
+    padding: 1%;
+    text-align: center;
+    color:white;
+    border-radius: 10px;
+    background-color: lightblue;
+}
+.right-part button{
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+#modal-info .modal-dialog {
+    width: 60%;
+}
 
-.right-part {
-    background-color: darkgray;
+#comment {
+    overflow-y: scroll;
+}
+
+.comment-add {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: none;
+    background-color: gainsboro;
+}
+
+#comment-cont {
+    height: 60px;
+    padding: 0;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+#comment div {
+    border-bottom: 2px solid black;
+}
+
+#comment p {
+    word-break: break-all;
+    word-wrap: break-word;
 }

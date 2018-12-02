@@ -17,7 +17,6 @@
     <link href="./css/circum.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/mySystem.js" type="text/javascript"></script>
     <script src="./js/nav.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="./js/circum.js" type="text/javascript"></script>
@@ -106,7 +105,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-12 text-center">
-                                            <a href="./login.jsp">未注册，进入注册页面</a>
+                                            <a href="./register.jsp">未注册，进入注册页面</a>
                                         </div>
                                     </form>
                                 </div>

@@ -8,7 +8,7 @@ body{
 #main{
     padding: 0;
 }
-.modal-dialog{
+#modal-info .modal-dialog{
 	width: 60%;
 }
 .content-wrap{
@@ -50,7 +50,6 @@ body{
 	overflow: hidden;
 }
 .post-permalink{
-
 }
 .widget .title::before{
 	content: "";

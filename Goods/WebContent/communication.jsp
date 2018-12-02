@@ -39,19 +39,30 @@
                 <p>沟通产生美</p>
             </div>
             <ul class="list-group" id="content">
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                <li class="list-group-item">123</li>
+                
             </ul>
             <ul class="pager">
-                <li class="divable"><a href="javascript:onclick= communication.showList(0)">上一页</a></li>
+                <li class=""><a href="javascript:onclick= communication.showList(0)">上一页</a></li>
                 <li><a href="javascript:onclick= communication.showList(1)">下一页</a></li>
             </ul>
         </div>
-        <div class="right-part col-md-2 col-md-offset-1">
-            <div class="page-header">
-                <h4>热门</h4>
+        <div class="col-md-2 col-md-offset-1" role="main">
+            <div class="right-part bs-docs-sideber affix">
+                <h4>快捷键</h4>
+                <button class="btn btn-success col-md-8 col-md-offset-2" onclick="location.href='issue.jsp'">发布</button>
+                <button class="btn btn-default col-md-8 col-md-offset-2">查看</button>
             </div>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#">123</a><span clsss="badge">热</span></li>
-            </ul>
         </div>
     </div>
     <!--login Modal -->
@@ -100,7 +111,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12 text-center">
-                                        <a href="./login.jsp">未注册，进入注册页面</a>
+                                        <a href="./register.jsp">未注册，进入注册页面</a>
                                     </div>
                                 </form>
                             </div>
@@ -129,11 +140,38 @@
                     <h4 class="modal-title" id="modallabel">标题</h4>
                 </div>
                 <div class="panel-body">
-                    <h1 class="text-center">标题</h1>
-                    <p class="h3 text-center">作者：<small>时间</small></p>
-                    <hr>
-                    <p class="text-center">同学都争先恐后的去找自己薄弱科目的老师进行辅导，老师总是会悉心的给我们一一解答。这样的一个月下来，我的成绩有了突飞猛进的进步。成绩的提高让我更有信心去面对最后的中考。　我们要把每一次的考试当作中考去认真对待，尽自己最大的努力去争取每一分。每一节课要认真去听讲，做好笔记，下课后巩固课堂所学知识，解决自己困惑的知识点。一定要相信自己能够成功！让我们一起备战中考，向自己的目标前进，不畏惧，不放弃，加油！绳上的世界作文 有趣的吹鸡毛比赛作文伟大的文化传承作文有趣的吹鸡毛比赛作文</p>
-                    <footer>阅读次数：<span class="badge">123456.0</span></footer>
+                    <div class="modal-left col-md-8">
+                        <h1 class="text-center">标题</h1>
+                        <h3 class="text-center">作者：<small>时间</small></h3>
+                        <hr>
+                        <p class="text-center">同学都争先恐后。这作文</p>
+                    </div>
+                    <div class="content-right col-md-4">
+                        <div class="head">
+                            <h3 class="text-right">评论</h3>
+                            <button class="btn btn-success" onclick="jQuery:$('.comment-add').show();">回复<span class="glyphicon glyphicon-plus-sign"></span></button>
+                            <div class="comment-add">
+                                <form class="form-group">
+                                    <textarea type="text" class="form-control" id="comment-cont" name="reply" placeholder="请输入评论" value="" maxlength="400"></textarea>
+                                    <input class="btn btn-success" type="submit" value="提交">
+                                    <input class="btn btn-default" type="reset" value="重置">
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <ul class="list-group" id="comment">
+                            <div class="list-group-ite">
+                                <h4 class="">何俊泽</h4>
+                                <p class="text-muted time text-right">2018.8.1</p>
+                                <p class="text-left">老铁6666666666666666666666666</p>
+                            </div>
+                            <div class="list-group-ite">
+                                <h4 class="">何俊泽</h4>
+                                <p class="text-muted time text-right">2018.8.1</p>
+                                <p class="text-left">老铁666666666666666666666666666666666666666666666666666</p>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
