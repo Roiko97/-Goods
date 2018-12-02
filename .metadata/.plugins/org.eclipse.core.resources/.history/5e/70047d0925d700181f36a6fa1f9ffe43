@@ -1,0 +1,64 @@
+package com.jung.revise;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.jung.User.User;
+import com.jung.sql.UserDAO;
+
+
+/**
+ *    接收用户修改信息
+ * @author jung
+ *
+ */
+@WebServlet("/userReviseServlet")
+public class userReviseServlet extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = request.getParameter("userName");// 通过Session会话 也可以得到该信息
+		System.out.println(username);
+		String userpass = request.getParameter("password");
+		String phone = request.getParameter("phone");
+		String nickname =request.getParameter("name");
+		String gender = request.getParameter("gender");
+		String email = request.getParameter("email");
+		Integer age = Integer.parseInt(request.getParameter("age"));
+		UserDAO userDao = new UserDAO();
+		//进行修改信息的二次检验
+		User user = new User(nickname,phone,email);
+		User userIsTrue = userDao.verificationInfo(user);
+		if(userIsTrue ==null)//代表验证通过
+		{
+			user = new User();
+			user.setUsername(username);
+			user.setUserpass(userpass);
+			user.setPhone(phone);
+			user.setNickname(nickname);
+			user.setEmail(email);
+			user.setAge(age);
+			user.setGender(gender);
+			Integer isTrue = userDao.userRevice(user);
+			if(isTrue == 0) {
+				// 修改失败
+				System.out.println("修改失败");
+				//此处在进行跳转
+			}else {
+				//修改成功
+				//此处在进行跳转
+				System.out.println("修改成功");
+			}
+		}else {  //验证失败，数据库内存在相同的信息
+			System.out.println("验证失败");
+		}
+		
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

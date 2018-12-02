@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jung.entity.Note">
+	<!--获取推文信息-->
+	<select id="getContext" resultMap="replaceId">
+		select * from note where id between #{range} and #{rangeto} order by id desc;
+	</select>
+	<resultMap type="com.jung.entity.Note" id="replaceId">
+		<result column="id" property="range"></result>
+	</resultMap>
+</mapper>

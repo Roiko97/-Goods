@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jung.entity.User">
+	<select id="userLogin" resultType="com.jung.entity.User">
+		select * from users
+		<where>
+			<if test="username !=null">
+				and username = #{username}
+			</if>
+			<if test="userpass !=null">
+				and userpass = #{userpass}
+			</if>
+			<if test="phone !=null">
+				and phone =#{phone}
+			</if>
+			<if test="nickname !=null">
+				and nickname =#{nickname}
+			</if>
+			<if test ="email !=null">
+				and email = #{email}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 进行数据验证，判断多个条件只要存在时的or关系 -->
+		<select id="VerificationInformation" resultType="com.jung.entity.User">
+		select * from users
+		<where>
+			<if test="username !=null">
+				or username = #{username}
+			</if>
+			<if test="userpass !=null">
+				or userpass = #{userpass}
+			</if>
+			<if test="phone !=null">
+				or phone =#{phone}
+			</if>
+			<if test="nickname !=null">
+				or nickname =#{nickname}
+			</if>
+			<if test ="email != null">
+				or email = #{email}
+			</if>
+		</where>
+	</select>
+	
+	
+	
+	<!-- 注册 -->
+	<sql id="user_field">
+		username,userpass,phone,nickname
+	</sql>
+	<insert id="userRegister" useGeneratedKeys="true" keyProperty="id">
+		insert into users(<include refid="user_field"></include>) values (#{username},#{userpass},#{phone},#{nickname})
+	</insert>
+	
+	
+	<update id="userRevise" >
+		update users
+		<set>
+			<if test="userpass !=null">
+				userpass = #{userpass},
+			</if>
+			<if test="phone !=null">
+				phone = #{phone},
+			</if>
+			<if test = "email !=null">
+				email = #{email},
+			</if>
+			<if test = "nickname !=null">
+				nickname = #{nickname},
+			</if>
+			<if test ="gender !=null">
+				gender  =#{gender},
+			</if>
+			<if test  ="age !=0">
+				age = #{age}
+			</if>
+		</set>
+		<where>
+			username = #{username}
+		</where>
+	</update>
+</mapper>

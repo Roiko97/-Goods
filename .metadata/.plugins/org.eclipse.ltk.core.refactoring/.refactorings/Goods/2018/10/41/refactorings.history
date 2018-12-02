@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.jung.register.duplicatedPhoneServlet&apos; to &apos;duplicatedUserServlet&apos;&#x0D;&#x0A;- Original project: &apos;Goods&apos;&#x0D;&#x0A;- Original element: &apos;com.jung.register.duplicatedPhoneServlet&apos;&#x0D;&#x0A;- Renamed element: &apos;com.jung.register.duplicatedUserServlet&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;duplicatedPhoneServlet&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.jung.register{duplicatedPhoneServlet.java[duplicatedPhoneServlet" matchStrategy="1" name="duplicatedUserServlet" qualified="false" references="true" similarDeclarations="false" stamp="1539434561463" textual="false" version="1.0"/>
+</session>

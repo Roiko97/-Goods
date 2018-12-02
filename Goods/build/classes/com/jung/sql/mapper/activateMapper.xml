@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.jung.entity.Activation">
+	<select id="userActivation" resultType="com.jung.entity.Activation">
+		select * from activate
+		<where>
+			<if test="activation !=null">
+				and activation = #{activation}
+			</if>			
+		</where>
+	</select>
+	
+	<select id="userTeacher" resultType="com.jung.entity.Activation">
+		select * from teacher_authentication
+		<where>
+			<if test="teacher_id !=null">
+				and teacher_id = #{teacher_id}
+			</if>		
+			<if test="teacher_password !=null">
+				and teacher_password = #{teacher_password}
+			</if>	
+		</where>
+	</select>
+	
+	<select id="userStudent" resultType="com.jung.entity.Activation">
+		select * from student_authentication
+		<where>
+			<if test="student_id !=null">
+				and student_id = #{student_id}
+			</if>		
+			<if test="student_password !=null">
+				and student_password = #{student_password}
+			</if>
+		</where>
+	</select>
+	
+	<update id="userStatus" >
+		update activate
+		<set>
+			<if test="activate_status !=null">
+				activate_status = #{activate_status},
+			</if>						
+		</set>
+		<where>
+			activation = #{activation}
+		</where>
+	</update>
+	
+	<update id="userStudentstatus" >
+		update student_authentication
+		<set>
+			<if test="student_activate_status !=null">
+				student_activate_status = #{student_activate_status},
+			</if>						
+		</set>
+		<where>
+			student_id = #{student_id}
+		</where>
+	</update>
+	
+	<update id="userTeacherstatus" >
+		update teacher_authentication
+		<set>
+			<if test="teacher_activate_status !=null">
+				teacher_activate_status = #{teacher_activate_status},
+			</if>						
+		</set>
+		<where>
+			teacher_id = #{teacher_id}
+		</where>
+	</update>
+</mapper>

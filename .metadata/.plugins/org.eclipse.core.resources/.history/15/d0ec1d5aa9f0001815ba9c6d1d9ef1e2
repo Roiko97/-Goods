@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jung.entity.LostAndFound">
+	<!--获取推文信息-->
+	<select id="getLostAndFound" resultType="com.jung.entity.LoginCache">
+		select * from LostAndFound
+	</select>
+	
+	<select id = "getCommunication" resultType = "com.jung.entity.Communication">
+		select * from communication
+	</select>
+	
+	<select id = "getReply" resultType  ="com.jung.entity.Reply">
+		select * from reply where target = #{target};
+	</select>
+	
+	
+	<sql id = "insetCom">
+		title,nickname,releasetime,pagecontect
+	</sql>
+	<insert id="insetCommunicaiton" useGeneratedKeys="true" keyProperty="id">
+		insert into communication(<include refid = "insetCom"></include>) values (#{title},#{nickname},#{releasetime},#{pagecontect});
+	</insert>
+	
+	<sql id= "insertR">
+		target,nickname,releasetime,pagecontect
+	</sql>
+	<insert id="insertReply" useGeneratedKeys="true" keyProperty="id">
+		insert into reply (<include refid="insertR"></include>) values (#{target},#{nickname},#{releasetime},#{pagecontect})
+	</insert>
+	
+	<sql id="insertLAF">
+		title,nickname,releasetime,pagecontect,solve
+	</sql>
+	<insert id = "insertLostAndFound" useGeneratedKeys="true" keyProperty="id">
+		insert into LostAndFound(<include refid="insertLAF"></include>) values(#{title},#{nickname},#{releasetime},#{pagecontect},#{solve})
+	</insert>
+</mapper>

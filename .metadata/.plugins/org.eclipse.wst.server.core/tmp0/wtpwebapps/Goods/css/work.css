@@ -1,0 +1,25 @@
+body {
+    background-color: aliceblue;
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    top: 80px;
+}
+
+.left-por {
+    background-color: white;
+}
+
+.main-part {
+    background-color: white;
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px;
+    border-radius: 20px;
+}
+
+.bottom-part {
+    background-color: white;
+}

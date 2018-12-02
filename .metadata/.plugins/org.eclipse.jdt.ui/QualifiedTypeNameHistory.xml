@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.apache.catalina.User"/>
+<fullyQualifiedTypeName name="com.jung.User.User"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
+<fullyQualifiedTypeName name="com.jung.User.Note"/>
+<fullyQualifiedTypeName name="com.jung.entity.Note"/>
+<fullyQualifiedTypeName name="com.jung.entity.Activation"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.log.Log"/>
+<fullyQualifiedTypeName name="com.jung.entity.LoginCache"/>
+<fullyQualifiedTypeName name="javafx.scene.shape.Arc"/>
+<fullyQualifiedTypeName name="com.jung.entity.Attractions"/>
+<fullyQualifiedTypeName name="com.jung.entity.Food"/>
+<fullyQualifiedTypeName name="com.jung.entity.Merchant"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.jung.entity.Academic"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.jung.sql.UserDAO"/>
+<fullyQualifiedTypeName name="com.jung.entity.Communication"/>
+<fullyQualifiedTypeName name="com.jung.ajax.insertOperating"/>
+<fullyQualifiedTypeName name="com.jung.entity.Reply"/>
+<fullyQualifiedTypeName name="com.jung.entity.LostAndFound"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
+</qualifiedTypeNameHistroy>

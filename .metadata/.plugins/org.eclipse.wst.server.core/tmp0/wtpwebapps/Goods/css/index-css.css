@@ -1,0 +1,92 @@
+body{
+	position: relative;
+    background-color: #ebebeb;
+    background-size: 100% auto;
+    background-origin:content-box;
+    background-repeat: repeat-y;
+}
+#main{
+    padding: 0;
+}
+.modal-dialog{
+	width: 60%;
+}
+.content-wrap{
+/*	background-color: #ebebeb;*/
+    margin-top:1%;
+	height:100%;
+	color:#505050;
+}
+.post{
+	background-color: #fff;
+	padding: 2em;
+	margin-bottom:1%;
+	height:250px;
+}
+.post-title{
+	text-align: center;
+	margin:1%;
+}
+.post-title a{
+	color: #000;
+}
+.post-meta{
+	text-align: center;
+	color: #999;
+}
+.author a{
+	color:#030;
+}
+.post-content{
+	width: 100%;
+	height: 100px;
+	color: #444443;
+}
+.post-content p{
+	width: inherit;
+	height: inherit;
+	word-wrap: break-word;
+	word-break: break-all;;
+	overflow: hidden;
+}
+.post-permalink{
+
+}
+.widget .title::before{
+	content: "";
+	height:1px;
+	background-color:#096;
+	left:0;
+	bottom: -1px; 
+
+}
+.post-footer::before{
+	content: "";
+	box-sizing:border-box;
+	height: 1px;
+	width:100%;
+	background-color: #096;
+	left: 0;
+	bottom: -1px;
+}
+.sidebar{
+
+}
+.widget{
+	background-color:#fff; 
+	padding: 2%;
+	margin-bottom:2%;
+}
+.widget .tag-cloud a{
+	border:1px solid #ebebeb;
+	line-height: 1.5em;
+	display: inline-block;
+	margin-right: 7px;
+	margin-top: 7px;
+	padding:2px 7px;
+	transition: all 0.2s ease;
+	color: #9c9c9c;
+}
+.advertising{
+    margin: 0;
+}
