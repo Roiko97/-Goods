@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12 text-center">
-                                        <a href="./login.jsp">未注册，进入注册页面</a>
+                                        <a href="./register.jsp">未注册，进入注册页面</a>
                                     </div>
                                 </form>
                             </div>

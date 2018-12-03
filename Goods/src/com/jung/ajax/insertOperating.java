@@ -17,16 +17,16 @@ public class insertOperating {
 	public JSONObject doInsert(Object obj) {
 		UserDAO userDao =new UserDAO();
 		JSONObject jsonObject = null;
-		if(obj instanceof Communication.class) {
+		if(obj instanceof Communication) {
 			int isTrue = userDao.insetCommunicaiton((Communication)obj);
 		
 			jsonObject = getResult(isTrue);		
 		}
-		else if(obj instanceof Reply.class) {
+		else if(obj instanceof Reply) {
 			int isTrue = userDao.insertReply((Reply)obj);
 			jsonObject = getResult(isTrue);				
 		}
-		else if(obj instanceof LostAndFound.class) {
+		else if(obj instanceof LostAndFound) {
 			int isTrue = userDao.insertLostAndFound((LostAndFound)obj);
 			jsonObject = getResult(isTrue);	
 		}else {

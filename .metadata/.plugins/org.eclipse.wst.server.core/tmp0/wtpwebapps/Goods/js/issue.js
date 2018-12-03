@@ -1,4 +1,4 @@
-﻿function formPush() {
+function formPush() {
     const title = $('#title').val();
     const content = $('#content').val();
     const url = $('#sort').val() == 0?"WritingLostAndFoundServlet":"WritingLostAndFoundServlet";
@@ -12,7 +12,6 @@
     map.set("nickname","damu");
     map.set("releasetime",time);
     map.set("pagecontect",content);
-
     $.ajax({
         url:"WritingLostAndFoundServlet",
         type:"post",

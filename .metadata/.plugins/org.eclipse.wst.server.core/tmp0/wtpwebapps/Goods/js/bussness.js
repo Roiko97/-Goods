@@ -61,11 +61,11 @@ bussessObj.prototype.createItem = function (x) {
     div_1.appendChild(div_2_2);
 
     var main = document.getElementsByClassName('flex-content');
-    main[0].appendChild(div_1);
-    if(x / 4 == 0 && x != 0){
+    if(Math.floor(x % 4) == 0 && x > 3){
         var hr = document.createElement('hr');
         hr.setAttribute('class','hr0');
         main[0].appendChild(hr);
     }
+    main[0].appendChild(div_1);
     this.count++;
 }

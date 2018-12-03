@@ -2,6 +2,7 @@ var news;
 var circum;
 var bussness;
 var communication;
+var work;
 var flag;
 //Title标题
 var title = (function getTitle() {
@@ -39,7 +40,7 @@ function init(title) {
             }
         case "communication":
             {
-                communication = new communicationOBJ();
+                communication = new communicationObj();
                 var sort = getCookie('sort');
                 if (sort == 'true') {
                     communication.flag = 0;
@@ -48,6 +49,12 @@ function init(title) {
                 }
                 clearCookie('sort');
                 communication.init();
+                break;
+            }
+            case "work":
+            {
+                work = new workObj();
+                work.init();
                 break;
             }
     }
@@ -94,6 +101,9 @@ function communication_1() {
 function communication_2() {
     setCookie('sort', false, 1);
     location.href = './communication.jsp?2';
+}
+function work(){
+    location.href = './work.jsp';
 }
 // 验证账号
 function checkuserName() {
