@@ -1,4 +1,4 @@
-var communicationOBJ = function () {
+var communicationObj = function () {
     this.left_list = new Array();
     this.right_list = new Array();
     this.num = 0;
