@@ -33,6 +33,9 @@ public class CommunicationServlet extends HttpServlet {
 			replyList = userDAO.getReply(communications[i]);
 			communications[i].setReply(replyList);
 		}
+		for (Communication communication : communications) {
+			System.out.println(communication);
+		}
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("communication", communications);
 		response.getOutputStream().write(jsonObject.toString().getBytes("utf-8"));

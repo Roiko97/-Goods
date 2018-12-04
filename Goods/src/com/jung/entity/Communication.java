@@ -6,14 +6,13 @@ import java.util.List;
 public class Communication extends Communicate{
 	String title ;//标题名
 	List<Reply> reply; //回复
-	public Communication(String title, String nickname, String releasetime, String pagecontect, List<Reply> reply) {
+	
+	public Communication(String title, List<Reply> reply) {
 		super();
 		this.title = title;
-		this.nickname = nickname;
-		this.releasetime = releasetime;
-		this.pagecontect = pagecontect;
 		this.reply = reply;
 	}
+	
 	public Communication() {
 		super();
 	}
@@ -49,9 +48,11 @@ public class Communication extends Communicate{
 	}
 	@Override
 	public String toString() {
-		return "Communication [title=" + title + ", nickname=" + nickname + ", releasetime=" + releasetime
-				+ ", pagecontect=" + pagecontect + ", reply=" + reply + "]";
+		return "Communication [title=" + title + ", reply=" + reply + ", id=" + id + ", nickname=" + nickname
+				+ ", releasetime=" + releasetime + ", pagecontect=" + pagecontect + "]";
 	}
+	
+	
 	
 	
 }
