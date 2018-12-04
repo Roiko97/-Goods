@@ -3,6 +3,8 @@ package com.jung.sql;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.attribute.standard.Finishings;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.jung.entity.Academic;
@@ -321,5 +323,28 @@ public class UserDAO {
     		sqlSession.close();
     	}
     	return isTrue;
+    }
+    //=============================
+    public List<Communication> queryCom(Communication com){
+    	List<Communication> list = new ArrayList<Communication>();
+    	try {
+    		list = getSqlSession().selectList("queryCom", com);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    public List<LostAndFound> queryLaf(LostAndFound laf){
+    	List<LostAndFound> list = new ArrayList<LostAndFound>();
+    	try {
+    		list = getSqlSession().selectList("queryLostAndFound",laf);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
     }
 }

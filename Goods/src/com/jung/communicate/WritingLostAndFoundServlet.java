@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import com.jung.ajax.insertOperating;
 import com.jung.entity.LostAndFound;
+import com.jung.listener.sessionAttributeListener;
 
 /**
  * Servlet implementation class WritingLostAndFoundServlet
@@ -19,7 +20,8 @@ import com.jung.entity.LostAndFound;
 public class WritingLostAndFoundServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");
-		String nickname = request.getParameter("nickname");
+		String nickname = request.getSession().getAttribute("userID").toString();
+		//String nickname = request.getParameter("nickname");
 		String releasetime = request.getParameter("releasetime");
 		String pagecontect= request.getParameter("pagecontect");
 		LostAndFound laf = new LostAndFound(title,nickname,releasetime,pagecontect,0);

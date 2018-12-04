@@ -6,10 +6,10 @@ var communicationObj = function () {
 }
 
 communicationObj.prototype.init = function () {
-    if(this.flag == 0){
+    if (this.flag == 0) {
         $('.page-header > h2').html('失物招领');
         $('.page-header > p').html('物归原主，善良至真');
-    }else{
+    } else {
         $('.page-header > h2').html('交流');
         $('.page-header > p').html('沟通产生美');
 
@@ -28,57 +28,67 @@ communicationObj.prototype.setList = function (obj) {
 communicationObj.prototype.showList = function (flag) {
     var len = Math.floor(this.num / 2);
     var max = Math.floor(this.left_list.length / 2);
-    if(len == 0 || len == 1){
-        $('.pager > li').eq(0).attr('class','disabled');
-        if(flag == 0)
+    if (len == 0 || len == 1) {
+        $('.pager > li').eq(0).attr('class', 'disabled');
+        if (flag == 0)
             return;
-    }else if(len == max){
-        $('.pager > li').eq(1).attr('class','disabled');
-        $('.pager > li').eq(0).attr('class','');
-        if(flag == 1)
+    } else if (len == max) {
+        $('.pager > li').eq(1).attr('class', 'disabled');
+        $('.pager > li').eq(0).attr('class', '');
+        if (flag == 1)
             return;
-    }
-    else{
-        $('.pager > li').eq(1).attr('class','');
-        $('.pager > li').eq(0).attr('class','');
+    } else {
+        $('.pager > li').eq(1).attr('class', '');
+        $('.pager > li').eq(0).attr('class', '');
     }
     $('#content').children().remove();
     if (flag == 0) {
-        for (var i = (len - 2) * 2; i <= (len-1) * 2 -1; i++) {
+        for (var i = (len - 2) * 2; i <= (len - 1) * 2 - 1; i++) {
             this.createList(i, this.left_list);
-            }
-            this.num -= 2;
+        }
+        this.num -= 2;
     } else {
         for (var i = len * 2; i < (len + 1) * 2; i++) {
             this.createList(i, this.left_list);
             this.num++;
         }
     }
-    if(Math.floor(this.num / 2) == 1){
-        $('.pager > li').eq(0).attr('class','disabled');
-        $('.pager > li').eq(1).attr('class','');
-        if(flag == 0)
+    if (Math.floor(this.num / 2) == 1) {
+        $('.pager > li').eq(0).attr('class', 'disabled');
+        $('.pager > li').eq(1).attr('class', '');
+        if (flag == 0)
             return;
-    }else if(Math.floor(this.num / 2) == max){
-        $('.pager > li').eq(1).attr('class','disabled');
-        $('.pager > li').eq(0).attr('class','');
-        if(flag == 1)
+    } else if (Math.floor(this.num / 2) == max) {
+        $('.pager > li').eq(1).attr('class', 'disabled');
+        $('.pager > li').eq(0).attr('class', '');
+        if (flag == 1)
             return;
-    }
-    else{
-        $('.pager > li').eq(1).attr('class','');
-        $('.pager > li').eq(0).attr('class','');
+    } else {
+        $('.pager > li').eq(1).attr('class', '');
+        $('.pager > li').eq(0).attr('class', '');
     }
 }
 
 function showInformation(obj) {
     var id = obj.parentNode.id;
-    console.log(this);
     $('.panel-body').find('h1').html(this.left_list[id].title);
-    $('.panel-body').find('h3').eq(0).html('作者：'+this.left_list[id].nickname+'<small>'+this.left_list[id].releasetime+'</small>');
+    $('.panel-body').find('h3').eq(0).html('作者：' + this.left_list[id].nickname + '<small>' + this.left_list[id].releasetime + '</small>');
     $('.panel-body').find('p').eq(0).html(this.left_list[id].pagecontect);
-    console.log();
+
+    if (communication.flag == 0) {
+        $('.modal-right').hide();
+        $('.modal-left').attr('class','modal-left col-md-8 col-md-offset-2');
+    } else {
+        $('.modal-right').show();
+        $('.modal-left').attr('class','modal-left col-md-8');
+    }
+
     $('#modal-info').modal();
+
+    $('#final').on('click', function () {
+        obj.style.color = 'black';
+        this.setAttribute('data-dismiss', 'modal');
+    });
 }
 communicationObj.prototype.requirList = function () {
     let com = this;
@@ -95,7 +105,7 @@ communicationObj.prototype.requirList = function () {
         data: {},
         success: function (res) {
             let json = eval(res);
-            console.log(json);
+            console.log(res);
             com.setList(json);
         },
         error: function () {
@@ -118,11 +128,9 @@ communicationObj.prototype.createList = function (id, array) {
     span_time.html(array[id].releasetime);
     small.html('作者：' + array.nickname);
     if (this.flag == 0) {
-        if(array[id].solve == 1)
-        {
+        if (array[id].solve == 1) {
             span_sort.html('已解决');
-        }
-        else{
+        } else {
             span_sort.html('未解决');
         }
     } else {
@@ -135,4 +143,30 @@ communicationObj.prototype.createList = function (id, array) {
     span_time.appendTo(li);
     a.appendTo(li);
     $('#content').append(li);
+}
+
+function sendReply() {
+    let content = $('#comment-cont').val();
+    const date = new Date();
+    const year = date.getUTCFullYear();
+    const month = date.getUTCMonth();
+    const day = date.getUTCDate();
+    const time = year + "年" + month + "月" + day + "日";
+    $.ajax({
+        url: 'ReplyServlet',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            'target':Number(1),
+            'nickname':'damu',
+            'releasetime':time,
+            'pagecontect':content,
+        },
+        success: function (res) {
+            console.log(res);
+        },
+        error: function () {
+            alert('网络出现问题，无法提交');
+        }
+    })
 }

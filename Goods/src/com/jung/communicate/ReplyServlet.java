@@ -20,7 +20,8 @@ import com.jung.sql.UserDAO;
 public class ReplyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int target = Integer.parseInt(request.getParameter("target"));
-		String nickname = request.getParameter("nickname");
+		String nickname = request.getSession().getAttribute("userID").toString();
+		//String nickname = request.getParameter("nickname");
 		String releasetime = request.getParameter("releasetime"); 
 		String pagecontect = request.getParameter("pagecontect"); //»Ø¸´ÄÚÈÝ
 		Reply  reply = new Reply(target,nickname,releasetime,pagecontect);

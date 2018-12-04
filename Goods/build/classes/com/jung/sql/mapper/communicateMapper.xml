@@ -35,4 +35,12 @@
 	<insert id = "insertLostAndFound" useGeneratedKeys="true" keyProperty="id">
 		insert into LostAndFound(<include refid="insertLAF"></include>) values(#{title},#{nickname},#{releasetime},#{pagecontect},#{solve})
 	</insert>
+	
+	<select id = "queryCom" resultType  ="com.jung.entity.Communication">
+		select * from communication where nickname = #{nickname};
+	</select>
+	
+	<select id="queryLostAndFound" resultType="com.jung.entity.LostAndFound">
+		select * from LostAndFound where nickname = #{nickname};
+	</select>
 </mapper>

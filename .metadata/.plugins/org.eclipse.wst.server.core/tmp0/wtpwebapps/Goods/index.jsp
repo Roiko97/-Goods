@@ -156,7 +156,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">阅读完成</button>
+                    <button type="button" class="btn btn-primary" id="final">阅读完成</button>
                 </div>
             </div>
         </div>

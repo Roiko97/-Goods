@@ -6,15 +6,17 @@
     this.readCount = new Array();
     this.Count = 0;
 }
-newsObj.prototype.init = function (obj) {
-    obj.addEventListener('scroll', debounce(loadInformation, 1000));
-    this.createNews();
-    this.createNews();
-    this.createNews();
-    this.createNews();
+newsObj.prototype.init = function () {
+    window.addEventListener('scroll', debounce(loadInformation, 1000));
     this.requestInformation();
 }
 newsObj.prototype.requestInformation = function () {
+
+    this.createNews();
+    this.createNews();
+    this.createNews();
+    this.createNews();
+
     let title = new Array();
     let author = new Array();
     let time = new Array();
@@ -63,7 +65,6 @@ function setInformation(title, author, time, content, reads) {
     this.readCount = this.readCount.concat(reads);
     this.authorText = this.authorText.concat(author);
 }
-
 function showInformation(obj) {
     let count = obj.parentNode.parentNode.getAttribute("id");
     let info_modal = $('#modal-info');
@@ -73,6 +74,12 @@ function showInformation(obj) {
     info_modal.find('.panel-body')[0].children[3].innerHTML = this.contentText[count];
     info_modal.find('.panel-body')[0].children[4].children[0].innerHTML = this.readCount[count];
     info_modal.modal();
+
+    let id = obj.parentNode.parentNode;
+    $('#final').on('click',function(){
+        id.style.backgroundColor = '#99ff99';
+        this.setAttribute('data-dismiss','modal');
+    });
     
 }
 newsObj.prototype.createNews = function () {
@@ -150,7 +157,7 @@ function loadInformation() {
     var wInnerH = window.innerHeight;
     var bScrollH = document.body.scrollHeight;
     if (wScrollY + wInnerH >= bScrollH) {
-        news.init();
+        news.requestInformation();
     }
 }
 //函数防抖动

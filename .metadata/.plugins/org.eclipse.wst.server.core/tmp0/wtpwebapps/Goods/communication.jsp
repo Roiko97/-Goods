@@ -39,18 +39,7 @@
                 <p>沟通产生美</p>
             </div>
             <ul class="list-group" id="content">
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                <li class="list-group-item">123</li>
-                
+
             </ul>
             <ul class="pager">
                 <li class=""><a href="javascript:onclick= communication.showList(0)">上一页</a></li>
@@ -146,16 +135,19 @@
                         <hr>
                         <p class="text-center">同学都争先恐后。这作文</p>
                     </div>
-                    <div class="content-right col-md-4">
+                    <div class="modal-right col-md-4">
                         <div class="head">
                             <h3 class="text-right">评论</h3>
                             <button class="btn btn-success" onclick="jQuery:$('.comment-add').show();">回复<span class="glyphicon glyphicon-plus-sign"></span></button>
                             <div class="comment-add">
                                 <form class="form-group">
-                                    <textarea type="text" class="form-control" id="comment-cont" name="reply" placeholder="请输入评论" value="" maxlength="400"></textarea>
+                                    <textarea type="text" class="form-control" id="comment-cont" name="reply"
+                                        placeholder="请输入评论" value="" maxlength="400"></textarea>
                                 </form>
-                                <input class="btn btn-success" type="submit" value="提交">
-                                <input class="btn btn-default" type="reset" value="重置">
+                                <div class="btn-group">
+                                    <button class=" btn btn-success"  onclick="sendReply()">提交</button>
+                                    <button class=" btn btn-default" onclick="jQuery:$('.comment-add').hide();">取消</button>
+                                </div>
                             </div>
                         </div>
                         <hr>
@@ -175,7 +167,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">阅读完成</button>
+                    <button type="button" class="btn btn-primary" id="final">阅读完成</button>
                 </div>
             </div>
         </div>
