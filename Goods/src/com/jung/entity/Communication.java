@@ -12,7 +12,12 @@ public class Communication extends Communicate{
 		this.title = title;
 		this.reply = reply;
 	}
-	
+//	public int getId() {
+//		return id;
+//	}
+//	public void setId(int id) {
+//		this.id = id;
+//	}
 	public Communication() {
 		super();
 	}
