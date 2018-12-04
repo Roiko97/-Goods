@@ -9,7 +9,6 @@ communicationObj.prototype.init = function () {
     if(this.flag == 0){
         $('.page-header > h2').html('失物招领');
         $('.page-header > p').html('物归原主，善良至真');
-
     }else{
         $('.page-header > h2').html('交流');
         $('.page-header > p').html('沟通产生美');
