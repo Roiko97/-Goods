@@ -21,7 +21,7 @@ function init(title) {
         case "index":
             {
                 news = new newsObj();
-                news.init(window);
+                news.init();
                 break;
             }
         case "circum":
