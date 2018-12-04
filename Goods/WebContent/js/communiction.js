@@ -5,7 +5,7 @@ var communicationObj = function () {
     this.flag = 1;
 }
 
-communicationOBJ.prototype.init = function () {
+communicationObj.prototype.init = function () {
     if(this.flag == 0){
         $('.page-header > h2').html('失物招领');
         $('.page-header > p').html('物归原主，善良至真');
@@ -17,7 +17,7 @@ communicationOBJ.prototype.init = function () {
     }
     this.requirList();
 }
-communicationOBJ.prototype.setList = function (obj) {
+communicationObj.prototype.setList = function (obj) {
     if (this.flag == 0) {
         this.left_list = obj.lostAndFound;
     } else {
@@ -26,7 +26,7 @@ communicationOBJ.prototype.setList = function (obj) {
     console.log(this.left_list);
     this.showList(1);
 }
-communicationOBJ.prototype.showList = function (flag) {
+communicationObj.prototype.showList = function (flag) {
     var len = Math.floor(this.num / 2);
     var max = Math.floor(this.left_list.length / 2);
     if(len == 0 || len == 1){
@@ -81,7 +81,7 @@ function showInformation(obj) {
     console.log();
     $('#modal-info').modal();
 }
-communicationOBJ.prototype.requirList = function () {
+communicationObj.prototype.requirList = function () {
     let com = this;
     var url;
     if (this.flag == 0) {
@@ -104,7 +104,7 @@ communicationOBJ.prototype.requirList = function () {
         }
     })
 }
-communicationOBJ.prototype.createList = function (id, array) {
+communicationObj.prototype.createList = function (id, array) {
 
     var li = $('<li></li>');
     var span_sort = $('<span></span>');
