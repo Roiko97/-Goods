@@ -30,5 +30,13 @@ public class Communicate {
 	public void setPagecontect(String pagecontect) {
 		this.pagecontect = pagecontect;
 	}
-	
+	public Communicate(String nickname, String releasetime, String pagecontect) {
+		super();
+		this.nickname = nickname;
+		this.releasetime = releasetime;
+		this.pagecontect = pagecontect;
+	}
+	public Communicate() {
+		
+	}
 }

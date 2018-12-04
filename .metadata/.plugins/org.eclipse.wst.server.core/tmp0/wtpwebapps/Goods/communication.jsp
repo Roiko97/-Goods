@@ -50,7 +50,7 @@
             <div class="right-part bs-docs-sideber affix">
                 <h4>快捷键</h4>
                 <button class="btn btn-success col-md-8 col-md-offset-2" onclick="location.href='issue.jsp'">发布</button>
-                <button class="btn btn-default col-md-8 col-md-offset-2">查看</button>
+                <button class="btn btn-default col-md-8 col-md-offset-2" onclick="seeList()">查看</button>
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
                                         placeholder="请输入评论" value="" maxlength="400"></textarea>
                                 </form>
                                 <div class="btn-group">
-                                    <button class=" btn btn-success"  onclick="sendReply()">提交</button>
+                                    <button class=" btn btn-success" id="submit">提交</button>
                                     <button class=" btn btn-default" onclick="jQuery:$('.comment-add').hide();">取消</button>
                                 </div>
                             </div>
@@ -168,6 +168,40 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-primary" id="final">阅读完成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--information show in Modal-->
+    <div id="modal-list" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modallabel">
+        <div class="modal-dialog" role="document">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modallabel">标题</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="modal-left col-md-7 col-md-offset-1">
+                        <ul class="list-group" id="self-list">
+
+                        </ul>
+                        <ul class="pager">
+                            <li class=""><a href="javascript:onclick= communication.showList(0)">上一页</a></li>
+                            <li><a href="javascript:onclick= communication.showList(1)">下一页</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="dropdown-menu" role="leftmenu">
+                            <li><a href="javascript:onclick=setObj.apply(circum,[1])">景点</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:onclick=setObj.apply(circum,[2])">商户</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:onclick=setObj.apply(circum,[3])">美食</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 </div>
             </div>
         </div>

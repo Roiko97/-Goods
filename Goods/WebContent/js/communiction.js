@@ -1,9 +1,11 @@
 var communicationObj = function () {
     this.left_list = new Array();
-    this.right_list = new Array();
-    this.num = 0;
+    this.self_list = new Array();
+    this.left_num = 0;
+    this.self_num = 0;
     this.flag = 1;
 }
+
 
 communicationObj.prototype.init = function () {
     if (this.flag == 0) {
@@ -16,6 +18,7 @@ communicationObj.prototype.init = function () {
     }
     this.requirList();
 }
+
 communicationObj.prototype.setList = function (obj) {
     if (this.flag == 0) {
         this.left_list = obj.lostAndFound;
@@ -23,64 +26,105 @@ communicationObj.prototype.setList = function (obj) {
         this.left_list = obj.communication;
     }
     console.log(this.left_list);
-    this.showList(1);
+    this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1);
 }
-communicationObj.prototype.showList = function (flag) {
-    var len = Math.floor(this.num / 2);
-    var max = Math.floor(this.left_list.length / 2);
-    if (len == 0 || len == 1) {
-        $('.pager > li').eq(0).attr('class', 'disabled');
-        if (flag == 0)
-            return;
-    } else if (len == max) {
-        $('.pager > li').eq(1).attr('class', 'disabled');
-        $('.pager > li').eq(0).attr('class', '');
-        if (flag == 1)
-            return;
-    } else {
-        $('.pager > li').eq(1).attr('class', '');
-        $('.pager > li').eq(0).attr('class', '');
+function previous(flag){
+    if(flag == 0){
+        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',0)
+    }else{
+        this.self_num = this.showList(this.self_list,this.self_num,'#modal-list',0)
     }
-    $('#content').children().remove();
+
+}
+
+function next(flag){
+    if(flag == 0){
+        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1)
+    }else{
+        this.self_num = this.showList(this.self_list,this.self_num,'#modal-list',1)
+    }
+}
+
+communicationObj.prototype.showList = function (list,num,name,flag) {
+    var len = Math.floor(num / 2);
+    var max = Math.floor(list.length / 2);
+    if (len == 0 || len == 1) {
+        $(name+'> .pager > li').eq(0).attr('class', 'disabled');
+        if (flag == 0)
+            return num;
+    } else if (len == max) {
+        $(name+'> .pager > li').eq(1).attr('class', 'disabled');
+        $(name+'> .pager > li').eq(0).attr('class', '');
+        if (flag == 1)
+            return num;
+    } else {
+        $(name+'> .pager > li').eq(1).attr('class', '');
+        $(name+'> .pager > li').eq(0).attr('class', '');
+    }
+    $(name +'> .content').children().remove();
     if (flag == 0) {
         for (var i = (len - 2) * 2; i <= (len - 1) * 2 - 1; i++) {
-            this.createList(i, this.left_list);
+            this.createList(name +'> .content',i, list);
         }
-        this.num -= 2;
+        num -= 2;
     } else {
         for (var i = len * 2; i < (len + 1) * 2; i++) {
-            this.createList(i, this.left_list);
-            this.num++;
+            this.createList(name +'> .content',i, list);
+            num++;
         }
     }
-    if (Math.floor(this.num / 2) == 1) {
-        $('.pager > li').eq(0).attr('class', 'disabled');
-        $('.pager > li').eq(1).attr('class', '');
+    if (Math.floor(num / 2) == 1) {
+        $(name+'> .pager > li').eq(0).attr('class', 'disabled');
+        $(name+'> .pager > li').eq(1).attr('class', '');
         if (flag == 0)
-            return;
-    } else if (Math.floor(this.num / 2) == max) {
-        $('.pager > li').eq(1).attr('class', 'disabled');
-        $('.pager > li').eq(0).attr('class', '');
+            return num;
+    } else if (Math.floor(num / 2) == max) {
+        $(name+'> .pager > li').eq(1).attr('class', 'disabled');
+        $(name+'> .pager > li').eq(0).attr('class', '');
         if (flag == 1)
-            return;
+            return num;
     } else {
-        $('.pager > li').eq(1).attr('class', '');
-        $('.pager > li').eq(0).attr('class', '');
+        $(name+'> .pager > li').eq(1).attr('class', '');
+        $(name+'> .pager > li').eq(0).attr('class', '');
     }
+    return num;
 }
 
 function showInformation(obj) {
     var id = obj.parentNode.id;
-    $('.panel-body').find('h1').html(this.left_list[id].title);
-    $('.panel-body').find('h3').eq(0).html('作者：' + this.left_list[id].nickname + '<small>' + this.left_list[id].releasetime + '</small>');
-    $('.panel-body').find('p').eq(0).html(this.left_list[id].pagecontect);
+    $('#modal-info').find('h1').html(this.left_list[id].title);
+    $('#modal-info').find('h3').eq(0).html('作者：' + this.left_list[id].nickname + '<small>' + this.left_list[id].releasetime + '</small>');
+    $('#modal-info').find('p').eq(0).html(this.left_list[id].pagecontect);
+
+    for(list of this.left_list[id].reply)
+    {
+        var div = $('<div></div>');
+        div.attr('class','list-group-item');
+
+        var h4 = $('<h4></h4>');
+        h4.html(list.nickname);
+
+        var time = $('<p></p>');
+        time.attr('class','text-muted time text-right');
+        time.html(list.releasetime);
+
+        var comment = $('<p></p>');
+        comment.attr('class','text-left');
+        comment.html(list.pagecontect);
+
+        div.append(h4);
+        div.append(time);
+        div.append(comment);
+
+        $('#comment').append(div);
+    }
 
     if (communication.flag == 0) {
-        $('.modal-right').hide();
-        $('.modal-left').attr('class','modal-left col-md-8 col-md-offset-2');
+        $('#modal-info > .modal-right').hide();
+        $('#modal-info > .modal-left').attr('class','modal-left col-md-8 col-md-offset-2');
     } else {
-        $('.modal-right').show();
-        $('.modal-left').attr('class','modal-left col-md-8');
+        $('#modal-info > .modal-right').show();
+        $('#modal-info > .modal-left').attr('class','modal-left col-md-8');
     }
 
     $('#modal-info').modal();
@@ -89,6 +133,8 @@ function showInformation(obj) {
         obj.style.color = 'black';
         this.setAttribute('data-dismiss', 'modal');
     });
+
+    $('#submit').attr('onclick','sendReply.apply(communication,['+id+'])');
 }
 communicationObj.prototype.requirList = function () {
     let com = this;
@@ -113,7 +159,7 @@ communicationObj.prototype.requirList = function () {
         }
     })
 }
-communicationObj.prototype.createList = function (id, array) {
+communicationObj.prototype.createList = function (id,count, array) {
 
     var li = $('<li></li>');
     var span_sort = $('<span></span>');
@@ -122,13 +168,13 @@ communicationObj.prototype.createList = function (id, array) {
     var a = $('<a></a>');
 
     li.attr('class', 'list-group-item');;
-    li.attr('id', id);
+    li.attr('id', count);
     span_sort.attr('class', 'badge');
     span_time.attr('class', 'badge');
-    span_time.html(array[id].releasetime);
+    span_time.html(array[count].releasetime);
     small.html('作者：' + array.nickname);
     if (this.flag == 0) {
-        if (array[id].solve == 1) {
+        if (array[count].solve == 1) {
             span_sort.html('已解决');
         } else {
             span_sort.html('未解决');
@@ -136,16 +182,16 @@ communicationObj.prototype.createList = function (id, array) {
     } else {
         span_sort.html('交流');
     }
-    a.html(array[id].title);
+    a.html(array[count].title);
     a.attr('onclick', 'showInformation.apply(communication,[this])');
 
     span_sort.appendTo(li);
     span_time.appendTo(li);
     a.appendTo(li);
-    $('#content').append(li);
+    $(id).append(li);
 }
 
-function sendReply() {
+function sendReply(id) {
     let content = $('#comment-cont').val();
     const date = new Date();
     const year = date.getUTCFullYear();
@@ -157,8 +203,7 @@ function sendReply() {
         type: 'post',
         dataType: 'json',
         data: {
-            'target':Number(1),
-            'nickname':'damu',
+            'target':Number(this.left_list[id].id),
             'releasetime':time,
             'pagecontect':content,
         },
@@ -166,7 +211,40 @@ function sendReply() {
             console.log(res);
         },
         error: function () {
-            alert('网络出现问题，无法提交');
+            alert('无法连接，请先登录');
         }
     })
+}
+
+function seeList(){
+    this.self_num = 0;
+    sort.apply(this,[0]);
+    $('#modal-list').modal();
+}
+function showSlefList(){
+    this.self_num = this.showList(this.self_list,this.self_num,'#modal-list',1)
+}
+function sort(flag){
+    let choose;
+    if(flag == 0){
+        choose = "laf";
+    }else{
+        choose = "com";
+    }
+    let that = this;
+    $.ajax({
+        url:'QueryMyselfServlet',
+        type:'post',
+        dataType:'json',
+        data:{
+            'choose':choose,
+        },
+        success:function(res){
+            let json = eval(res);
+            console.log(res);
+            that.self_list = json;
+            showSlefList.apply(that,[]);
+        },
+    });
+
 }

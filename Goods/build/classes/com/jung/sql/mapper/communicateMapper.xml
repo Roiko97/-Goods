@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id = "getReply" resultType  ="com.jung.entity.Reply">
-		select * from reply where target = #{target};
+		select * from reply where target = #{id};
 	</select>
 	
 	

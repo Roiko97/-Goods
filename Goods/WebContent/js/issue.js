@@ -1,7 +1,7 @@
 function formPush() {
     const title = $('#title').val();
     const content = $('#content').val();
-    const url = $('#sort').val() == 0 ? "WritingLostAndFoundServlet" : "WritingLostAndFoundServlet";
+    const url = $('#sort').val() == 0 ? "WritingLostAndFoundServlet" : "WritingCommunicationServlet";
     const date = new Date();
     const year = date.getUTCFullYear();
     const month = date.getUTCMonth();
@@ -17,7 +17,7 @@ function formPush() {
     map.set("releasetime", time);
     map.set("pagecontect", content);
 
-    if (url == 'WritingLostAndFoundServlet') {
+    if (url == 'WritingCommunicationServlet') {
         sendForm(map,url,'post');
     } else {
         $.ajax({

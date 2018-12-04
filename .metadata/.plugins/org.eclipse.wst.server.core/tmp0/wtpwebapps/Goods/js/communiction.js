@@ -1,7 +1,8 @@
 var communicationObj = function () {
     this.left_list = new Array();
-    this.right_list = new Array();
-    this.num = 0;
+    this.self_list = new Array();
+    this.left_num = 0;
+    this.self_num = 0;
     this.flag = 1;
 }
 
@@ -23,11 +24,11 @@ communicationObj.prototype.setList = function (obj) {
         this.left_list = obj.communication;
     }
     console.log(this.left_list);
-    this.showList(1);
+    this.showList(this.left_num,this.left_list,1);
 }
-communicationObj.prototype.showList = function (flag) {
-    var len = Math.floor(this.num / 2);
-    var max = Math.floor(this.left_list.length / 2);
+communicationObj.prototype.showList = function (num,obj,flag) {
+    var len = Math.floor(num / 2);
+    var max = Math.floor(obj.length / 2);
     if (len == 0 || len == 1) {
         $('.pager > li').eq(0).attr('class', 'disabled');
         if (flag == 0)
@@ -44,12 +45,12 @@ communicationObj.prototype.showList = function (flag) {
     $('#content').children().remove();
     if (flag == 0) {
         for (var i = (len - 2) * 2; i <= (len - 1) * 2 - 1; i++) {
-            this.createList(i, this.left_list);
+            this.createList('content',i, this.left_list);
         }
         this.num -= 2;
     } else {
         for (var i = len * 2; i < (len + 1) * 2; i++) {
-            this.createList(i, this.left_list);
+            this.createList('content',i, this.left_list);
             this.num++;
         }
     }
@@ -89,6 +90,8 @@ function showInformation(obj) {
         obj.style.color = 'black';
         this.setAttribute('data-dismiss', 'modal');
     });
+
+    $('#submit').attr('onclick','sendReply.apply(communication,['+id+'])');
 }
 communicationObj.prototype.requirList = function () {
     let com = this;
@@ -113,7 +116,7 @@ communicationObj.prototype.requirList = function () {
         }
     })
 }
-communicationObj.prototype.createList = function (id, array) {
+communicationObj.prototype.createList = function (id,count, array) {
 
     var li = $('<li></li>');
     var span_sort = $('<span></span>');
@@ -145,7 +148,7 @@ communicationObj.prototype.createList = function (id, array) {
     $('#content').append(li);
 }
 
-function sendReply() {
+function sendReply(id) {
     let content = $('#comment-cont').val();
     const date = new Date();
     const year = date.getUTCFullYear();
@@ -157,8 +160,7 @@ function sendReply() {
         type: 'post',
         dataType: 'json',
         data: {
-            'target':Number(1),
-            'nickname':'damu',
+            'target':Number(this.left_list[id].id),
             'releasetime':time,
             'pagecontect':content,
         },
@@ -169,4 +171,10 @@ function sendReply() {
             alert('网络出现问题，无法提交');
         }
     })
+}
+
+function seeList(){
+
+    $('#modal-list').modal();
+    $('self-list')
 }

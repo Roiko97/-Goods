@@ -34,7 +34,12 @@ body {
     width: 60%;
 }
 
+#modal-list .modal-dialog {
+    width: 60%;
+}
+
 #comment {
+    height:400px;
     overflow-y: scroll;
 }
 

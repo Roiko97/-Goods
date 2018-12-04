@@ -28,9 +28,11 @@ public class WritingCommunicationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Map<String,String> hashMap = (HashMap)request.getParameterMap();
 		Map<String, String[]> map = request.getParameterMap();
+		System.out.println(map);
 		Set<Map.Entry<String, String[]>> set = map.entrySet();
 		Communication com = new Communication();
 		for(Map.Entry<String,String[]> entry:set) {
+			System.out.println("这里运行");
 			System.out.println(entry.getKey() +" : "+entry.getValue());			
 			try {
 				BeanUtils.populate(com, map);
@@ -41,6 +43,7 @@ public class WritingCommunicationServlet extends HttpServlet {
 			}
 			System.out.println(com);
 		}
+		System.out.println("在循环外面");
 		insertOperating in = insertOperating.getInstance();
 		JSONObject jsonObject = in.doInsert(com);
    		response.getOutputStream().write(jsonObject.toString().getBytes("utf-8"));

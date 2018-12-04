@@ -34,6 +34,10 @@ body {
     width: 60%;
 }
 
+#modal-list .modal-dialog {
+    width: 60%;
+}
+
 #comment {
     overflow-y: scroll;
 }

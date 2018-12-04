@@ -258,6 +258,7 @@ public class UserDAO {
     	try {
     		list = getSqlSession().selectList("getCommunication");
     	}catch(Exception e) {
+    		System.out.println("这里报错");
     		System.out.println(e.getMessage());
     	}finally {
     		sqlSession.close();
@@ -270,6 +271,7 @@ public class UserDAO {
     	try {
     		list = getSqlSession().selectList("getReply",com);
     	}catch(Exception e) {
+    	    System.out.println("在getReply这里报错");
     		System.out.println(e.getMessage());
     	}finally {
     		sqlSession.close();

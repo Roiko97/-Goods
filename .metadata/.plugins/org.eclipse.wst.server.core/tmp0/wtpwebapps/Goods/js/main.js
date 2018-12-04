@@ -82,6 +82,9 @@ function communication_2() {
 function work(){
     location.href = './work.jsp';
 }
+function academic(){
+    location.href = './academic.jsp';
+}
 // 验证账号
 function checkuserName() {
     var userName = jQuery('#userName').val();

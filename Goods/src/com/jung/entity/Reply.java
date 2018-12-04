@@ -23,12 +23,10 @@ public class Reply extends Communicate{
 	public void setPagecontect(String pagecontect) {
 		this.pagecontect = pagecontect;
 	}
-	public Reply(int target, String nickname, String releasetime, String pagecontect) {
-		super();
+	
+	public Reply(int target,String nickname,String releasetime,String pagecontect) {
+		super(nickname,releasetime,pagecontect);
 		this.target = target;
-		this.nickname = nickname;
-		this.releasetime = releasetime;
-		this.pagecontect = pagecontect;
 	}
 	public int getTarget() {
 		return target;
