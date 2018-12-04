@@ -153,9 +153,9 @@
                             <div class="comment-add">
                                 <form class="form-group">
                                     <textarea type="text" class="form-control" id="comment-cont" name="reply" placeholder="请输入评论" value="" maxlength="400"></textarea>
-                                    <input class="btn btn-success" type="submit" value="提交">
-                                    <input class="btn btn-default" type="reset" value="重置">
                                 </form>
+                                <input class="btn btn-success" type="submit" value="提交">
+                                <input class="btn btn-default" type="reset" value="重置">
                             </div>
                         </div>
                         <hr>

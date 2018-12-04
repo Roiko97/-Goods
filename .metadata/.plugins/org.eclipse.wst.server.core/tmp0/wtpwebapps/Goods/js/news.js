@@ -6,7 +6,8 @@
     this.readCount = new Array();
     this.Count = 0;
 }
-newsObj.prototype.init = function () {
+newsObj.prototype.init = function (obj) {
+    obj.addEventListener('scroll', debounce(loadInformation, 1000));
     this.createNews();
     this.createNews();
     this.createNews();
@@ -142,4 +143,25 @@ newsObj.prototype.createNews = function () {
     main.appendChild(article);
     //新闻数量
     this.Count++;
+}
+//加载信息
+function loadInformation() {
+    var wScrollY = window.scrollY;
+    var wInnerH = window.innerHeight;
+    var bScrollH = document.body.scrollHeight;
+    if (wScrollY + wInnerH >= bScrollH) {
+        news.init();
+    }
+}
+//函数防抖动
+function debounce(fn, delay) {
+    let timer = null;
+    return function () {
+        let context = this;
+        let args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn.apply(context, args);
+        }, delay);
+    }
 }
