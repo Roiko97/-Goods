@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Table {
 	String table_id; //表格id
+	String user_id; //商家id
 	private int range;  //选中的商家信息
 	private String Name;    //姓名
 	private String Phone;   //电话
@@ -20,6 +21,12 @@ public class Table {
 	private String expand_8;  //拓展字段8
 	private String expand_9;  //拓展字段9
 	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public int getRange() {
 		return range;
 	}

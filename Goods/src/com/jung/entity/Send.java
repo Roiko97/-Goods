@@ -4,11 +4,18 @@ import java.util.List;
 
 public class Send {
 	String table_id; //表格id
+	String user_id; //商家id
 	String name; //商家名
 	String position; //商家招聘职位
 	String info ; //商家兼职信息
 	List<Table> students; //学生提交的应聘表格
 	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public String getTable_id() {
 		return table_id;
 	}
@@ -51,6 +58,9 @@ public class Send {
 		this.position = position;
 		this.info = info;
 		this.students = students;
+	}
+	public Send() {
+		super();
 	}
 	
 }

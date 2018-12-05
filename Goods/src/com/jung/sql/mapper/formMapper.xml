@@ -7,10 +7,6 @@
 	<insert id="userSend" useGeneratedKeys="true" keyProperty="id">
 		insert into form(<include refid="user_field"></include>) values (#{Name},#{Place},#{Position},#{content},#{expand_1},#{expand_2},#{expand_3},#{expand_4},#{expand_5},#{expand_6},#{expand_7},#{expand_8},#{expand_9})
 	</insert>
-	
-	<sql id="user_field">
-		Name,Phone,position,content,expand_1,expand_2,expand_3,expand_4,expand_5,expand_6,expand_7,expand_8,expand_9
-	</sql>
 	<insert id="StudentSend" useGeneratedKeys="true" keyProperty="id">
 		insert into StudentSend(<include refid="user_field"></include>) values (#{Name},#{Phone},,#{position},#{content},#{expand_1},#{expand_2},#{expand_3},#{expand_4},#{expand_5},#{expand_6},#{expand_7},#{expand_8},#{expand_9})
 	</insert>
@@ -19,7 +15,7 @@
 		select * from form 
 	</select>
 	<select id="getStudnet" resultType="com.jung.entity.Table">
-		select * from StudentSend where table_id = #{table_id}
+		select * from StudentSend where table_id = #{table_id} and user_id=#{user_id}
 	</select>
 	
 	<select id="getUserInformation" resultMap="replaceId">

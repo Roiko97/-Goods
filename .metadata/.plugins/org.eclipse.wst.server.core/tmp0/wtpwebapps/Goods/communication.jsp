@@ -171,21 +171,23 @@
                     <h4 class="modal-title" id="modallabel">标题</h4>
                 </div>
                 <div class="panel-body">
-                    <div class="modal-left col-md-7 col-md-offset-1">
+                    <div class="self-list col-md-8">
                         <ul class="list-group content">
 
                         </ul>
                         <ul class="pager">
-                            <li class=""><a href="javascript:onclick= communication.previous(1)">上一页</a></li>
-                            <li><a href="javascript:onclick= communication.next(1)">下一页</a></li>
+                            <li class=""><a href="javascript:onclick= previous.apply(communication,[1])">上一页</a></li>
+                            <li><a href="javascript:onclick= next.apply(communication,[1])">下一页</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-md-offset-1">
+                        <ul class="list-group">
+                            <a href="javascript:onclick=sort.apply(communication,[1])" class="btn btn-info list-group-item">交流</a>
+                            <a href="javascript:onclick=sort.apply(communication,[0])" class="btn btn-info list-group-item">失物招领</a>
                         </ul>
                     </div>
                 </div>
-                <ul class="dropdown-menu">
-                        <li><a href="javascript:onclick=sort.apply(communication,[1])">交流</a></li>
-                        <li class="divider"></li>
-                        <li><a href="javascript:onclick=sort.apply(communication,[0])">失物招领</a></li>
-                </ul>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 </div>

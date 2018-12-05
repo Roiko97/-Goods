@@ -242,3 +242,53 @@ CREATE TABLE academic(
 	pagecontect varchar(10000) not null comment '发布内容',
 	validity int not null default 1 comment '有效性 1代表有效 0代表无效'
 )default charset 'utf8';
+
+CREATE TABLE form(
+	table_id INT auto_increment PRIMARY KEY COMMENT '表格编号',
+	user_id int not null conmment'商家id',
+	name varchar(100) not null conmment'商家名称',
+	place varchar(1000) not null comment'商家位置',
+	position varchar(200) not null comment '招聘职位',
+	content varchar(20000) not null comment'招聘内容',
+	expand_0 varchar(20000) comment '拓展字段零',
+    expand_1 varchar(20000) comment '拓展字段一',
+	expand_2 varchar(20000) comment '拓展字段二',
+	expand_3 varchar(20000) comment '拓展字段三',
+	expand_4 varchar(20000) comment '拓展字段四',
+	expand_5 varchar(20000) comment '拓展字段五',
+	expand_6 varchar(20000) comment '拓展字段六',
+	expand_7 varchar(20000) comment '拓展字段七',
+	expand_8 varchar(20000) comment '拓展字段八',
+	expand_9 varchar(20000) comment '拓展字段九'
+)DEFAULT CHARSET "utf8";
+
+create table StudentSend(
+	table_id INT auto_increment PRIMARY KEY COMMENT '表格编号',
+	user_id int not null conmment'商家id',
+	name varchar(100) not null conmment'学生姓名',
+	phone varchar(1000) not null comment'学生电话'
+	position varchar(200) not null comment '应聘职位',
+	content varchar(20000) not null comment'个人简介',
+	expand_0 varchar(20000) comment '拓展字段零',
+    expand_1 varchar(20000) comment '拓展字段一',
+	expand_2 varchar(20000) comment '拓展字段二',
+	expand_3 varchar(20000) comment '拓展字段三',
+	expand_4 varchar(20000) comment '拓展字段四',
+	expand_5 varchar(20000) comment '拓展字段五',
+	expand_6 varchar(20000) comment '拓展字段六',
+	expand_7 varchar(20000) comment '拓展字段七',
+	expand_8 varchar(20000) comment '拓展字段八',
+	expand_9 varchar(20000) comment '拓展字段九'
+)default charset "utf8";
+
+create table Send(
+	table_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '表格编号',
+    username varchar(50) not null comment '商户名',
+    position varchar(13) not null comment '商户招聘职位',
+    infomation varchar(200000) comment '商户兼职信息',
+)default charset "utf8";
+INSERT INTO Send(username,position,imfomation) values ('良品铺子','销售员','良品铺子你值得拥有');
+INSERT INTO Send(username,position,imfomation) values ('中国电信','网维人员','中国电信绝对相信');
+INSERT INTO Send(username,position,imfomation) values ('耐克','售后服务员','just do it');
+INSERT INTO Send(username,position,imfomation) values ('优衣库','导购','做最好的试衣间');
+INSERT INTO Send(username,position,imfomation) values ('名创优品','导购','名创优品你的优品');

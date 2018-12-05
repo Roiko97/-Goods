@@ -245,6 +245,7 @@ CREATE TABLE academic(
 
 CREATE TABLE form(
 	table_id INT auto_increment PRIMARY KEY COMMENT '表格编号',
+	user_id int not null conmment'商家id',
 	name varchar(100) not null conmment'商家名称',
 	place varchar(1000) not null comment'商家位置',
 	position varchar(200) not null comment '招聘职位',
@@ -263,6 +264,7 @@ CREATE TABLE form(
 
 create table StudentSend(
 	table_id INT auto_increment PRIMARY KEY COMMENT '表格编号',
+	user_id int not null conmment'商家id',
 	name varchar(100) not null conmment'学生姓名',
 	phone varchar(1000) not null comment'学生电话'
 	position varchar(200) not null comment '应聘职位',
