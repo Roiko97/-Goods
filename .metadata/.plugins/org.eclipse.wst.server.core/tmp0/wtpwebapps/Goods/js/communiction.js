@@ -3,12 +3,13 @@ var communicationObj = function () {
     this.self_list = new Array();
     this.left_num = 0;
     this.self_num = 0;
-    this.flag = 1;
+    this.left_flag = 1;
+    this.self_flag = 1;
 }
 
 
 communicationObj.prototype.init = function () {
-    if (this.flag == 0) {
+    if (this.left_flag == 0) {
         $('.page-header > h2').html('失物招领');
         $('.page-header > p').html('物归原主，善良至真');
     } else {
@@ -20,34 +21,39 @@ communicationObj.prototype.init = function () {
 }
 
 communicationObj.prototype.setList = function (obj) {
-    if (this.flag == 0) {
+    if (this.left_flag == 0) {
         this.left_list = obj.lostAndFound;
     } else {
         this.left_list = obj.communication;
     }
-    console.log(this.left_list);
-    this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1);
+    this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1,this.left_flag);
 }
 function previous(flag){
     if(flag == 0){
-        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',0)
+        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',0,this.left_flag);
     }else{
-        this.self_num = this.showList(this.self_list,this.self_num,'#modal-list',0)
+        this.self_num = this.showList(this.self_list,this.self_num,'.self-list',0,this.self_flag);
     }
 
 }
 
 function next(flag){
     if(flag == 0){
-        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1)
+        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1,this.left_flag);
     }else{
-        this.self_num = this.showList(this.self_list,this.self_num,'#modal-list',1)
+        this.self_num = this.showList(this.self_list,this.self_num,'.self-list',1,this.self_flag);
     }
 }
 
-communicationObj.prototype.showList = function (list,num,name,flag) {
-    var len = Math.floor(num / 2);
-    var max = Math.floor(list.length / 2);
+communicationObj.prototype.showList = function (list,num,name,flag,sort) {
+    let page = 2;
+    if(list.length % 2 == 0){
+        page = 2;
+    }else{
+        page = 3;
+    }
+    var max = Math.floor(list.length / page);
+    var len = Math.floor(num / page);
     if (len == 0 || len == 1) {
         $(name+'> .pager > li').eq(0).attr('class', 'disabled');
         if (flag == 0)
@@ -63,22 +69,22 @@ communicationObj.prototype.showList = function (list,num,name,flag) {
     }
     $(name +'> .content').children().remove();
     if (flag == 0) {
-        for (var i = (len - 2) * 2; i <= (len - 1) * 2 - 1; i++) {
-            this.createList(name +'> .content',i, list);
+        for (var i = (len - 2) * page; i <= (len - 1) * page - 1; i++) {
+            this.createList(name +'> .content',i, list,sort);
         }
-        num -= 2;
+        num -= page;
     } else {
-        for (var i = len * 2; i < (len + 1) * 2; i++) {
-            this.createList(name +'> .content',i, list);
+        for (var i = len * page; i < (len + 1) * page; i++) {
+            this.createList(name +'> .content',i, list,sort);
             num++;
         }
     }
-    if (Math.floor(num / 2) == 1) {
+    if (Math.floor(num / page) == 1) {
         $(name+'> .pager > li').eq(0).attr('class', 'disabled');
         $(name+'> .pager > li').eq(1).attr('class', '');
         if (flag == 0)
             return num;
-    } else if (Math.floor(num / 2) == max) {
+    } else if (Math.floor(num / page) == max) {
         $(name+'> .pager > li').eq(1).attr('class', 'disabled');
         $(name+'> .pager > li').eq(0).attr('class', '');
         if (flag == 1)
@@ -119,7 +125,7 @@ function showInformation(obj) {
         $('#comment').append(div);
     }
 
-    if (communication.flag == 0) {
+    if (communication.left_flag == 0) {
         $('#modal-info > .modal-right').hide();
         $('#modal-info > .modal-left').attr('class','modal-left col-md-8 col-md-offset-2');
     } else {
@@ -139,7 +145,7 @@ function showInformation(obj) {
 communicationObj.prototype.requirList = function () {
     let com = this;
     var url;
-    if (this.flag == 0) {
+    if (this.left_flag == 0) {
         url = 'LostAndFoundServlet';
     } else {
         url = 'CommunicationServlet';
@@ -159,8 +165,7 @@ communicationObj.prototype.requirList = function () {
         }
     })
 }
-communicationObj.prototype.createList = function (id,count, array) {
-
+communicationObj.prototype.createList = function (id,count, array,sort) {
     var li = $('<li></li>');
     var span_sort = $('<span></span>');
     var span_time = $('<span></span>');
@@ -173,7 +178,7 @@ communicationObj.prototype.createList = function (id,count, array) {
     span_time.attr('class', 'badge');
     span_time.html(array[count].releasetime);
     small.html('作者：' + array.nickname);
-    if (this.flag == 0) {
+    if (sort == 0) {
         if (array[count].solve == 1) {
             span_sort.html('已解决');
         } else {
@@ -192,6 +197,11 @@ communicationObj.prototype.createList = function (id,count, array) {
 }
 
 function sendReply(id) {
+    var sessionText = $.trim(document.getElementById('username').innerHTML);
+    if(sessionText == 'null'){
+        alert('请先登录');
+        return ;
+    }
     let content = $('#comment-cont').val();
     const date = new Date();
     const year = date.getUTCFullYear();
@@ -218,20 +228,29 @@ function sendReply(id) {
 
 function seeList(){
     this.self_num = 0;
+    var sessionText = $.trim(document.getElementById('username').innerHTML);
+    if(sessionText == 'null'){
+        alert('请先登录');
+        return ;
+    }
     sort.apply(this,[0]);
-    $('#modal-list').modal();
+    
 }
 function showSlefList(){
-    this.self_num = this.showList(this.self_list,this.self_num,'#modal-list',1)
+    this.self_num = this.showList(this.self_list,this.self_num,'.self-list',1,this.self_flag);
+    $('#modal-list').modal();
 }
 function sort(flag){
     let choose;
     if(flag == 0){
         choose = "laf";
+        this.self_flag = 0;
     }else{
         choose = "com";
+        this.self_flag = 1;
     }
     let that = this;
+    console.log(choose);
     $.ajax({
         url:'QueryMyselfServlet',
         type:'post',
@@ -241,9 +260,14 @@ function sort(flag){
         },
         success:function(res){
             let json = eval(res);
-            console.log(res);
-            that.self_list = json;
-            showSlefList.apply(that,[]);
+            console.log(json);
+            if($.isEmptyObject(json.queryResult)){
+                alert("未发布相关信息");
+                return false;
+            }else{
+                that.self_list = json.queryResult;
+                showSlefList.apply(that,[]);
+            }
         },
     });
 

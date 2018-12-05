@@ -23,21 +23,25 @@ function showInformation(obj) {
 //请求数据
 workObj.prototype.requireList = function(){
     var work = this;
+    console.log(this);
     $.ajax({
-        url:"",
+        url:"getUserTableServlet",
         type:"post",
         dataType:"JSON",
         data:"",
         success:function(res){
             var json = eval(res);
-            console.log(res);
+            console.log(this);
+            work.setList(json);
         },
         error:function(){
 
         }
     });
 }
+workObj.prototype.setList = function(obj){
 
+}
 //显示信息,0上一页，1下一页
 workObj.prototype.showList = function(flag){
     //分页

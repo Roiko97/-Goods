@@ -52,5 +52,8 @@ public class Send {
 		this.info = info;
 		this.students = students;
 	}
+	public Send() {
+		super();
+	}
 	
 }
