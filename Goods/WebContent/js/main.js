@@ -185,7 +185,6 @@ function checkCookie() {
     login.style.display = 'inline';
     logou.style.display = 'none';
     var sessionText = $.trim(document.getElementById('username').innerHTML);
-    console.log(sessionText);
     flag = getCookie("flag");
     if (flag == "false" && sessionText == 'null') {
         $("#login-Modal").modal();
@@ -204,7 +203,7 @@ function checkCookie() {
         clearCookie("flag");
         location.href = "./" + title + ".jsp?logout=exit";
     } else if (sessionText == 'null') {
-
+        
     } else if (sessionText != 'null') {
         $('#log-status').html(sessionText);
         $('#log-status').show();
