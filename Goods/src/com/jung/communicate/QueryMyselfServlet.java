@@ -28,13 +28,14 @@ public class QueryMyselfServlet extends HttpServlet {
 		UserDAO userDAO = new UserDAO();
 		List<LostAndFound> list_l = new ArrayList<LostAndFound>();
 		List<Communication>list_c = new ArrayList<Communication>();
+		System.out.println(choose);
 		JSONObject jsonObject = new JSONObject();
-		if(choose == "laf") { //代表失物招领
+		if(choose.equals("laf")) { //代表失物招领
 			LostAndFound laf = new LostAndFound();
 			laf.setNickname(nickname);
 			list_l = userDAO.queryLaf(laf);
 			jsonObject.put("queryResult", list_l);
-		}else if(choose == "com") { //代表交流
+		}else if(choose.equals("com")) { //代表交流
 			Communication com = new Communication();
 			com.setNickname(nickname);
 			list_c = userDAO.queryCom(com);
@@ -42,6 +43,7 @@ public class QueryMyselfServlet extends HttpServlet {
 		}else {
 			jsonObject.put("queryResult","error");
 		}
+		System.out.println(jsonObject);
 		response.getOutputStream().write(jsonObject.toString().getBytes("utf-8"));
 	}
 
