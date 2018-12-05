@@ -20,5 +20,6 @@
     	<mapper resource ="com/jung/sql/mapper/surroundingMapper.xml"/>
     	<mapper resource ="com/jung/sql/mapper/communicateMapper.xml"/>
     	<mapper resource ="com/jung/sql/mapper/academicMapper.xml"/>
+    	<mapper resource="com/jung/sql/mapper/formMapper.xml"/>
     </mappers>
 </configuration>

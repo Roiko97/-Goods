@@ -37,4 +37,6 @@
 <fullyQualifiedTypeName name="com.jung.entity.Communication"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.jung.entity.Table"/>
+<fullyQualifiedTypeName name="com.jung.entity.Send"/>
 </qualifiedTypeNameHistroy>

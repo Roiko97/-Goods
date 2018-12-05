@@ -16,6 +16,8 @@ import com.jung.entity.LostAndFound;
 import com.jung.entity.Merchant;
 import com.jung.entity.Note;
 import com.jung.entity.Reply;
+import com.jung.entity.Send;
+import com.jung.entity.Table;
 import com.jung.entity.User;
 
 /**
@@ -342,6 +344,71 @@ public class UserDAO {
     	List<LostAndFound> list = new ArrayList<LostAndFound>();
     	try {
     		list = getSqlSession().selectList("queryLostAndFound",laf);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    //================ljl
+ //------------------提交表单
+    
+    public Integer userSend(Table user) {
+    	Integer isTrue = 0;
+    	try{
+    		isTrue = getSqlSession().update("userSend",user);
+    		sqlSession.commit();
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return isTrue;
+    }
+    
+    public Integer StudentSend(Table user) {
+    	Integer isTrue = 0;
+    	try{
+    		isTrue = getSqlSession().update("StudentSend",user);
+    		sqlSession.commit();
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return isTrue;
+    }
+    
+    //---------------------获取商家招聘信息    
+    public List getUser() {
+    	List<Table> list = new ArrayList<Table>();
+    	try {
+    		list = getSqlSession().selectList("getUser");
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    
+    public List getStudent(Send user) {
+    	List<Table> list = new ArrayList<Table>();
+    	try {
+    		list = getSqlSession().selectList("getStudent",user);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    
+    public List getUserInformation(Table user) {
+    	List<Table> list = new ArrayList<Table>();
+    	try {
+    		list = getSqlSession().selectList("getUserInformation");
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}finally {
