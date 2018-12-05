@@ -22,6 +22,7 @@ import com.jung.sql.UserDAO;
  * @author DELL
  *
  */
+@WebServlet("/getUserTableServlet")
 public class getUserTableServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDAO userDAO = new UserDAO();

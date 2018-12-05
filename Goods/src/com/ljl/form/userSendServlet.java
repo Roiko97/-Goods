@@ -1,10 +1,12 @@
 package com.ljl.form;
 
 import java.io.IOException;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +18,7 @@ import com.jung.entity.Communication;
 import com.jung.entity.Table;
 import com.jung.entity.User;
 import com.jung.sql.UserDAO;
-
+@WebServlet("/userSendServlet")
 public class userSendServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

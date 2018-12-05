@@ -13,7 +13,6 @@ function formPush() {
     
     let map = new Map();
     map.set("title", title);
-    map.set("nickname", "damu");
     map.set("releasetime", time);
     map.set("pagecontect", content);
 
