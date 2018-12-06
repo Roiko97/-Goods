@@ -33,9 +33,9 @@ public class getUserTableServlet extends HttpServlet {
 		
 		//获取具体招聘信息
 		List<Table> table = new ArrayList<Table>();
-		Integer count = Integer.parseInt(request.getParameter("Count"));
+		//Integer count = Integer.parseInt(request.getParameter("Count"));
 		Table userInfo = new Table();
-		userInfo.setRange(count);
+		userInfo.setRange(3);
 		table = userDAO.getUserInformation(userInfo);
 		
 		//获取该条信息应聘的学生

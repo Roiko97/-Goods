@@ -408,7 +408,7 @@ public class UserDAO {
     public List getUserInformation(Table user) {
     	List<Table> list = new ArrayList<Table>();
     	try {
-    		list = getSqlSession().selectList("getUserInformation");
+    		list = getSqlSession().selectList("getUserInformation",user);
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}finally {
