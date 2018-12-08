@@ -9,8 +9,10 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.jung.entity.Academic;
 import com.jung.entity.Activation;
+import com.jung.entity.Application;
 import com.jung.entity.Attractions;
 import com.jung.entity.Communication;
+import com.jung.entity.DependAcademic;
 import com.jung.entity.Food;
 import com.jung.entity.LostAndFound;
 import com.jung.entity.Merchant;
@@ -281,17 +283,70 @@ public class UserDAO {
     	return list;
     }
     //------------------------com.jung.entity.academic-----------------------
-    public List getAcademic(int chose) {
-    	List<Academic> list = new ArrayList<Academic>();
+    
+    public int getAcademicId(Academic academic) {
+    	int result  = -1;
     	try {
-    		list = getSqlSession().selectList("getReply",chose);
+    		result = getSqlSession().selectOne("getAcademicId", academic);
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}finally {
     		sqlSession.close();
     	}
-    	return list;
+    	return result;
     }
+    
+    
+    public int insertAcademic(Academic academic) {
+    	int isTrue = 0;
+    	try {
+        	isTrue = getSqlSession().insert("insertAcademic",academic);
+        	sqlSession.commit();
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return isTrue;
+    }
+    
+    public int insertDependAcademic(List<DependAcademic> list) {
+    	int isTrue = 0;
+    	try {
+        	isTrue = getSqlSession().insert("insertDependAcademic",list);
+        	sqlSession.commit();
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return isTrue;
+    }
+    
+    public int insertApplication(List<Application> list ) {
+    	int isTrue = 0;
+    	try {
+        	isTrue = getSqlSession().insert("insertApplication",list);
+        	sqlSession.commit();
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return isTrue;
+    }
+    public List selectApplication(Application application) {
+    	List<Application> list = new ArrayList<>();
+    	try {
+    		list = getSqlSession().selectList("selectApplication",application);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list ;
+    }
+    //============================================================================
     public int insetCommunicaiton(Communication com) {
     	int isTrue = 0;
     	try {

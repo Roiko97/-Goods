@@ -239,8 +239,21 @@ CREATE TABLE academic(
     types int not null comment ' 1 代表 竞赛信息 2代表科研信息 3代表讲座信息',
     announcer varchar(50) not null comment ' 发布者',
     releasetime varchar(50) not null comment '发布时间',
-	pagecontect varchar(10000) not null comment '发布内容',
+	pagecontect varchar(20000) not null comment '发布内容',
 	validity int not null default 1 comment '有效性 1代表有效 0代表无效'
+)default charset 'utf8';
+create table dependacademic(
+	id int auto_increment primary key comment '自增长id',
+    mark int not null comment '关联id',
+    description varchar(50) not null comment '说明',
+    content varchar(100) not null comment '内容'
+)default charset 'utf8';
+
+create table application(
+	id int auto_increment primary key comment '自增长id',
+    nickname varchar(50) not null comment '回复者',
+    mark int not null comment '关联id',
+     content varchar(100) not null comment '内容'
 )default charset 'utf8';
 
 

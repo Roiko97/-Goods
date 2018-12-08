@@ -15,16 +15,12 @@
 <fullyQualifiedTypeName name="com.jung.entity.Food"/>
 <fullyQualifiedTypeName name="com.jung.entity.Merchant"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-<fullyQualifiedTypeName name="com.jung.entity.Academic"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.jung.ajax.insertOperating"/>
 <fullyQualifiedTypeName name="com.jung.entity.Reply"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="com.jung.listener.sessionAttributeListener"/>
-<fullyQualifiedTypeName name="com.jung.sql.UserDAO"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="javax.print.attribute.standard.Finishings"/>
 <fullyQualifiedTypeName name="com.jung.entity.User"/>
@@ -32,11 +28,17 @@
 <fullyQualifiedTypeName name="com.jung.communicate.LostAndFoundServlet"/>
 <fullyQualifiedTypeName name="com.jung.entity.LostAndFound"/>
 <fullyQualifiedTypeName name="java.sql.Array"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.jung.entity.Communication"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="com.jung.entity.Table"/>
 <fullyQualifiedTypeName name="com.jung.entity.Send"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="com.jung.sql.UserDAO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.jung.entity.DependAcademic"/>
+<fullyQualifiedTypeName name="com.jung.entity.Academic"/>
+<fullyQualifiedTypeName name="com.jung.entity.Application"/>
 </qualifiedTypeNameHistroy>

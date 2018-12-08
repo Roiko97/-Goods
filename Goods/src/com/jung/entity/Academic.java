@@ -1,21 +1,46 @@
 package com.jung.entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Academic {
-	int types ; // 1 代表 竞赛信息 2代表科研信息 3代表讲座信息
-	String announcer;  //发布者
+	int id ;//表示表格的id
+	int types ;//1 代表 竞赛信息 2代表科研信息 3代表讲座信息
+	String announcer ; //发布者
 	String releasetime; //发布时间
-	String pagecontect;  //发布内容
-	int validity;
-	public Academic(int types, String announcer, String releasetime, String pagecontect, int validity) {
+	String pagecontect ; //发布内容
+	int validity ; // 有效性 1代表有效 0代表无效
+	List<DependAcademic> dependAcademic ; //依附内容
+
+	
+	public List<DependAcademic> getDependAcademic() {
+		return dependAcademic;
+	}
+	public void setDependAcademic(List<DependAcademic> dependAcademic) {
+		this.dependAcademic = dependAcademic;
+	}
+	public Academic(int id, int types, String announcer, String releasetime, String pagecontect, int validity,
+			List<DependAcademic> dependAcademic) {
 		super();
+		this.id = id;
 		this.types = types;
 		this.announcer = announcer;
 		this.releasetime = releasetime;
 		this.pagecontect = pagecontect;
 		this.validity = validity;
+		this.dependAcademic = dependAcademic;
 	}
-	public Academic() {
-		super();
+	@Override
+	public String toString() {
+		return "Academic [id=" + id + ", types=" + types + ", announcer=" + announcer + ", releasetime=" + releasetime
+				+ ", pagecontect=" + pagecontect + ", validity=" + validity + ", dependAcademic=" + dependAcademic
+				+ "]";
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getTypes() {
 		return types;
@@ -47,10 +72,8 @@ public class Academic {
 	public void setValidity(int validity) {
 		this.validity = validity;
 	}
-	@Override
-	public String toString() {
-		return "Academic [types=" + types + ", announcer=" + announcer + ", releasetime=" + releasetime
-				+ ", pagecontect=" + pagecontect + ", validity=" + validity + "]";
-	} 
+	public Academic() {
+		super();
+	}
 	
 }

@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jung.entity.Academic">
-	<select id="getAcademic" resultType="com.jung.entity.Academic">
-		select * from academic where types = #{chose} and validity = 1;
+
+	<select id="getAcademicId" resultType="com.jung.entity.Academic">
+		select id from academic where announcer ={#announcer} and releasetime ={#releasetime} and validity = 1
 	</select>
+	
+	<sql id = "insertAd">
+		types,announcer,releasetime,pagecontect
+	</sql>
+	<insert id="insertAcademic" useGeneratedKeys="true" keyProperty="id">
+		insert into academic(<include refid = "insertAd"></include>) values (#{types},#{announcer},#{releasetime},#{pagecontect});
+	</insert>
+	
+	<sql id = "insertDA">
+		mark,description,content
+	</sql>
+	<insert id="insertDependAcademic" useGeneratedKeys="true" keyProperty="id">
+		insert into dependacademic(<include refid = "insertDA"></include>) values
+		<foreach collection="list" item = "da" separator=",">
+			(
+				#{da.mark},#{da.description},#{da.content}
+			)
+		</foreach>
+	</insert>
+	
+	
+	<insert id="insertApplication" useGeneratedKeys="true" keyProperty="id">
+		insert into application(mark,content) values
+		<foreach collection="list" item = "da" separator=",">
+			(
+				#{da.mark},#{da.content}
+			)
+		</foreach>
+	</insert>
+	
+	<select id="selectApplication" resultType="com.jung.entity.Application">
+		select * from application where mark =#{mark} and nickname =#{nickname}
+	</select>
+	
 </mapper>
