@@ -39,4 +39,10 @@
 		select * from application where mark =#{mark} and nickname =#{nickname}
 	</select>
 	
+	
+	<select id="getTitleAcademic" resultType="com.jung.entity.Titleacademic">
+		select * from titleacademic;
+	</select>
+	
+	
 </mapper>

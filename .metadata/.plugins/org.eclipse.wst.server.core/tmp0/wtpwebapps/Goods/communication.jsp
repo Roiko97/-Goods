@@ -189,7 +189,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-default" onclick="javascript:location.href='communication.jsp?1'";>关闭</button>
                 </div>
             </div>
         </div>

@@ -24,14 +24,7 @@ import com.jung.sql.UserDAO;
 @WebServlet("/AcademicServlet")
 public class AcademicServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-//		int types = Integer.parseInt(request.getParameter("types"));
-//		UserDAO userDAO = new UserDAO();
-//		List<Academic> list = new ArrayList<Academic>();
-//		list = userDAO.getAcademic(types);
-//		JSONObject jsonObject = new JSONObject();
-//		jsonObject.put("academicList", list);
-//		response.getOutputStream().write(jsonObject.toString().getBytes("utf-8"));
-		
+
 		// flag = 0  -> 发布
 		// flag = 1  -> 申请
 		// flag = 2  -> 查看

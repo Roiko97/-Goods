@@ -28,7 +28,6 @@
 <fullyQualifiedTypeName name="com.jung.communicate.LostAndFoundServlet"/>
 <fullyQualifiedTypeName name="com.jung.entity.LostAndFound"/>
 <fullyQualifiedTypeName name="java.sql.Array"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.jung.entity.Communication"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
@@ -36,9 +35,11 @@
 <fullyQualifiedTypeName name="com.jung.entity.Send"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="com.jung.sql.UserDAO"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.jung.entity.DependAcademic"/>
 <fullyQualifiedTypeName name="com.jung.entity.Academic"/>
 <fullyQualifiedTypeName name="com.jung.entity.Application"/>
+<fullyQualifiedTypeName name="com.jung.sql.UserDAO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.jung.entity.Titleacademic"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

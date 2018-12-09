@@ -20,6 +20,7 @@ import com.jung.entity.Note;
 import com.jung.entity.Reply;
 import com.jung.entity.Send;
 import com.jung.entity.Table;
+import com.jung.entity.Titleacademic;
 import com.jung.entity.User;
 
 /**
@@ -464,6 +465,17 @@ public class UserDAO {
     	List<Table> list = new ArrayList<Table>();
     	try {
     		list = getSqlSession().selectList("getUserInformation",user);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    public List getTitleAcademic() {
+    	List<Titleacademic> list = new ArrayList<>();
+    	try {
+    		list = getSqlSession().selectList("getTitleAcademic");
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}finally {

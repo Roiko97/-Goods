@@ -11,7 +11,7 @@ public class Academic {
 	String pagecontect ; //发布内容
 	int validity ; // 有效性 1代表有效 0代表无效
 	List<DependAcademic> dependAcademic ; //依附内容
-
+	int mark;
 	
 	public List<DependAcademic> getDependAcademic() {
 		return dependAcademic;
@@ -19,8 +19,15 @@ public class Academic {
 	public void setDependAcademic(List<DependAcademic> dependAcademic) {
 		this.dependAcademic = dependAcademic;
 	}
+	
+	public int getMark() {
+		return mark;
+	}
+	public void setMark(int mark) {
+		this.mark = mark;
+	}
 	public Academic(int id, int types, String announcer, String releasetime, String pagecontect, int validity,
-			List<DependAcademic> dependAcademic) {
+			List<DependAcademic> dependAcademic, int mark) {
 		super();
 		this.id = id;
 		this.types = types;
@@ -29,12 +36,7 @@ public class Academic {
 		this.pagecontect = pagecontect;
 		this.validity = validity;
 		this.dependAcademic = dependAcademic;
-	}
-	@Override
-	public String toString() {
-		return "Academic [id=" + id + ", types=" + types + ", announcer=" + announcer + ", releasetime=" + releasetime
-				+ ", pagecontect=" + pagecontect + ", validity=" + validity + ", dependAcademic=" + dependAcademic
-				+ "]";
+		this.mark = mark;
 	}
 	public int getId() {
 		return id;
