@@ -26,111 +26,106 @@ communicationObj.prototype.setList = function (obj) {
     } else {
         this.left_list = obj.communication;
     }
-    this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1,this.left_flag);
-}
-function previous(flag){
-    if(flag == 0){
-        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',0,this.left_flag);
-    }else{
-        this.self_num = this.showList(this.self_list,this.self_num,'.self-list',0,this.self_flag);
-    }
-
+    this.left_num = this.showList(this.left_list, this.left_num, '.left-part', 1, this.left_flag);
 }
 
-function next(flag){
-    if(flag == 0){
-        this.left_num = this.showList(this.left_list,this.left_num,'.left-part',1,this.left_flag);
-    }else{
-        this.self_num = this.showList(this.self_list,this.self_num,'.self-list',1,this.self_flag);
-    }
-}
-
-communicationObj.prototype.showList = function (list,num,name,flag,sort) {
-    let page = 2;
-    if(list.length % 2 == 0){
-        page = 2;
-    }else{
-        page = 3;
-    }
-    var max = Math.floor(list.length / page);
-    var len = Math.floor(num / page);
-    if (len == 0 || len == 1) {
-        $(name+'> .pager > li').eq(0).attr('class', 'disabled');
-        if (flag == 0)
-            return num;
-    } else if (len == max) {
-        $(name+'> .pager > li').eq(1).attr('class', 'disabled');
-        $(name+'> .pager > li').eq(0).attr('class', '');
-        if (flag == 1)
-            return num;
-    } else {
-        $(name+'> .pager > li').eq(1).attr('class', '');
-        $(name+'> .pager > li').eq(0).attr('class', '');
-    }
-    $(name +'> .content').children().remove();
+function previous(flag) {
     if (flag == 0) {
-        for (var i = (len - 2) * page; i <= (len - 1) * page - 1; i++) {
-            this.createList(name +'> .content',i, list,sort);
-        }
-        num -= page;
+        this.left_num = this.showList(this.left_list, this.left_num, '.left-part', 0, this.left_flag);
     } else {
-        for (var i = len * page; i < (len + 1) * page; i++) {
-            this.createList(name +'> .content',i, list,sort);
+        this.self_num = this.showList(this.self_list, this.self_num, '.self-list', 0, this.self_flag);
+    }
+
+}
+
+function next(flag) {
+    if (flag == 0) {
+        this.left_num = this.showList(this.left_list, this.left_num, '.left-part', 1, this.left_flag);
+    } else {
+        this.self_num = this.showList(this.self_list, this.self_num, '.self-list', 1, this.self_flag);
+    }
+}
+
+communicationObj.prototype.showList = function (list, num, name, flag, sort) {
+    let page = Math.floor(list.length / 2) < 6 ? Math.floor(list.length / 2) : 6;
+    var max = list.length;
+    var len = num;
+    let morpage = 0;
+    console.log("start:" + len);
+    if (flag == 0) {
+        if (max <= len && max % page != 0) {
+            morpage = max % page;
+        } else if (len == 0 || len == page) {
+            return num;
+        }
+        console.log("page:" + page);
+        $(name + '> .content').children().remove();
+        if (len % page == 0) {
+            for (var i = len - page * 2; i < len - page; i++) {
+                console.log(i);
+                this.createList(name + '> .content', i, list, sort);
+            }
+            num -= page;
+        } else{
+            for (var i = len - page - morpage; i <= len - page; i++) {
+                console.log(i);
+                this.createList(name + '> .content', i, list, sort);
+            }
+            num = len - page +1;
+        }
+    } else {
+        if (max <= len) {
+            return num;
+        } else if (max - len < page) {
+            page = max - len;
+        }
+        $(name + '> .content').children().remove();
+        for (var i = len; i < len + page; i++) {
+            this.createList(name + '> .content', i, list, sort);
             num++;
         }
     }
+    console.log("end:" + num);
+    return pageCheck(name, num, max, page);
+}
+
+function pageCheck(name, num, max, page) {
     if (Math.floor(num / page) == 1) {
-        $(name+'> .pager > li').eq(0).attr('class', 'disabled');
-        $(name+'> .pager > li').eq(1).attr('class', '');
+        $(name + '> .pager > li').eq(0).attr('class', 'disabled');
+        $(name + '> .pager > li').eq(1).attr('class', '');
         if (flag == 0)
             return num;
-    } else if (Math.floor(num / page) == max) {
-        $(name+'> .pager > li').eq(1).attr('class', 'disabled');
-        $(name+'> .pager > li').eq(0).attr('class', '');
+    } else if (num == max) {
+        $(name + '> .pager > li').eq(1).attr('class', 'disabled');
+        $(name + '> .pager > li').eq(0).attr('class', '');
         if (flag == 1)
             return num;
     } else {
-        $(name+'> .pager > li').eq(1).attr('class', '');
-        $(name+'> .pager > li').eq(0).attr('class', '');
+        $(name + '> .pager > li').eq(1).attr('class', '');
+        $(name + '> .pager > li').eq(0).attr('class', '');
     }
     return num;
 }
 
-function showInformation(obj) {
+function showInformation(obj, name) {
     var id = obj.parentNode.id;
-    $('#modal-info').find('h1').html(this.left_list[id].title);
-    $('#modal-info').find('h3').eq(0).html('作者：' + this.left_list[id].nickname + '<small>' + this.left_list[id].releasetime + '</small>');
-    $('#modal-info').find('p').eq(0).html(this.left_list[id].pagecontect);
-
-    for(list of this.left_list[id].reply)
-    {
-        var div = $('<div></div>');
-        div.attr('class','list-group-item');
-
-        var h4 = $('<h4></h4>');
-        h4.html(list.nickname);
-
-        var time = $('<p></p>');
-        time.attr('class','text-muted time text-right');
-        time.html(list.releasetime);
-
-        var comment = $('<p></p>');
-        comment.attr('class','text-left');
-        comment.html(list.pagecontect);
-
-        div.append(h4);
-        div.append(time);
-        div.append(comment);
-
-        $('#comment').append(div);
-    }
-
-    if (communication.left_flag == 0) {
-        $('#modal-info > .modal-right').hide();
-        $('#modal-info > .modal-left').attr('class','modal-left col-md-8 col-md-offset-2');
+    let flag = 0;
+    let array = '';
+    if (name == 'left') {
+        flag = this.left_flag;
+        array = this.left_list;
     } else {
-        $('#modal-info > .modal-right').show();
-        $('#modal-info > .modal-left').attr('class','modal-left col-md-8');
+        flag = this.self_flag;
+        array = this.self_list;
+    }
+    $('#modal-info').find('h1').html(array[id].title);
+    $('#modal-info').find('h3').eq(0).html('作者：' + array[id].nickname + '<small>' + array[id].releasetime + '</small>');
+    $('#modal-info').find('p').eq(0).html(array[id].pagecontect);
+
+    if (flag == 0) {
+        lafShow();
+    } else {
+        comShow(array, id);
     }
 
     $('#modal-info').modal();
@@ -140,7 +135,38 @@ function showInformation(obj) {
         this.setAttribute('data-dismiss', 'modal');
     });
 
-    $('#submit').attr('onclick','sendReply.apply(communication,['+id+'])');
+    $('#submit').attr('onclick', 'sendReply.apply(communication,[' + id + '])');
+}
+
+function lafShow() {
+    $('#modal-info').find('.modal-right').hide();
+    $('#modal-info').find('.modal-left').attr('class', 'modal-left col-md-8 col-md-offset-2');
+}
+
+function comShow(array, id) {
+    $('#modal-info').find('.modal-right').show();
+    $('#modal-info').find('.modal-left').attr('class', 'modal-left col-md-8');
+    for (list of arry[id].reply) {
+        var div = $('<div></div>');
+        div.attr('class', 'list-group-item');
+
+        var h4 = $('<h4></h4>');
+        h4.html(list.nickname);
+
+        var time = $('<p></p>');
+        time.attr('class', 'text-muted time text-right');
+        time.html(list.releasetime);
+
+        var comment = $('<p></p>');
+        comment.attr('class', 'text-left');
+        comment.html(list.pagecontect);
+
+        div.append(h4);
+        div.append(time);
+        div.append(comment);
+
+        $('#comment').append(div);
+    }
 }
 communicationObj.prototype.requirList = function () {
     let com = this;
@@ -165,7 +191,7 @@ communicationObj.prototype.requirList = function () {
         }
     })
 }
-communicationObj.prototype.createList = function (id,count, array,sort) {
+communicationObj.prototype.createList = function (id, count, array, sort) {
     var li = $('<li></li>');
     var span_sort = $('<span></span>');
     var span_time = $('<span></span>');
@@ -188,7 +214,9 @@ communicationObj.prototype.createList = function (id,count, array,sort) {
         span_sort.html('交流');
     }
     a.html(array[count].title);
-    a.attr('onclick', 'showInformation.apply(communication,[this])');
+    let str = id.split('-')[0];
+    str = str.split('.')[1];
+    a.attr('onclick', "showInformation.apply(communication,[this,'" + str + "'])");
 
     span_sort.appendTo(li);
     span_time.appendTo(li);
@@ -198,9 +226,9 @@ communicationObj.prototype.createList = function (id,count, array,sort) {
 
 function sendReply(id) {
     var sessionText = $.trim(document.getElementById('username').innerHTML);
-    if(sessionText == 'null'){
+    if (sessionText == 'null') {
         alert('请先登录');
-        return ;
+        return;
     }
     let content = $('#comment-cont').val();
     const date = new Date();
@@ -213,9 +241,9 @@ function sendReply(id) {
         type: 'post',
         dataType: 'json',
         data: {
-            'target':Number(this.left_list[id].id),
-            'releasetime':time,
-            'pagecontect':content,
+            'target': Number(this.left_list[id].id),
+            'releasetime': time,
+            'pagecontect': content,
         },
         success: function (res) {
             console.log(res);
@@ -226,47 +254,50 @@ function sendReply(id) {
     })
 }
 
-function seeList(){
+function seeList() {
     this.self_num = 0;
     var sessionText = $.trim(document.getElementById('username').innerHTML);
-    if(sessionText == 'null'){
+    if (sessionText == 'null') {
         alert('请先登录');
-        return ;
+        return;
     }
-    sort.apply(this,[0]);
-    
+    sort.apply(this, [0]);
+
 }
-function showSlefList(){
-    this.self_num = this.showList(this.self_list,this.self_num,'.self-list',1,this.self_flag);
+
+function showSlefList() {
+    this.self_num = this.showList(this.self_list, this.self_num, '.self-list', 1, this.self_flag);
     $('#modal-list').modal();
 }
-function sort(flag){
+
+function sort(flag) {
     let choose;
-    if(flag == 0){
+    if (flag == 0) {
         choose = "laf";
         this.self_flag = 0;
-    }else{
+    } else {
         choose = "com";
         this.self_flag = 1;
     }
+    this.self_num = 0;
     let that = this;
     console.log(choose);
     $.ajax({
-        url:'QueryMyselfServlet',
-        type:'post',
-        dataType:'json',
-        data:{
-            'choose':choose,
+        url: 'QueryMyselfServlet',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            'choose': choose,
         },
-        success:function(res){
+        success: function (res) {
             let json = eval(res);
             console.log(json);
-            if($.isEmptyObject(json.queryResult)){
+            if ($.isEmptyObject(json.queryResult)) {
                 alert("未发布相关信息");
                 return false;
-            }else{
+            } else {
                 that.self_list = json.queryResult;
-                showSlefList.apply(that,[]);
+                showSlefList.apply(that, []);
             }
         },
     });

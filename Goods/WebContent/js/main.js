@@ -2,7 +2,6 @@ var news;
 var circum;
 var bussness;
 var communication;
-var work;
 var flag;
 //Title标题
 var title = (function getTitle() {
@@ -22,6 +21,8 @@ function init(title) {
             {
                 news = new newsObj();
                 news.init();
+                let win = window;
+                win.addEventListener('scroll', debounce(loadInformation, 1000));
                 break;
             }
         case "circum":
@@ -41,22 +42,37 @@ function init(title) {
                 communication = new communicationObj();
                 var sort = getCookie('sort');
                 if (sort == 'true') {
-                    communication.flag = 0;
+                    communication.left_flag = 0;
                 } else if(sort == 'false') {
-                    communication.flag = 1;
+                    communication.left_flag = 1;
                 }
                 clearCookie('sort');
                 communication.init();
                 break;
             }
-            case "work":
-            {
-                work = new workObj();
-                work.init();
-                break;
-            }
     }
 
+}
+//加载信息
+function loadInformation() {
+    var wScrollY = window.scrollY;
+    var wInnerH = window.innerHeight;
+    var bScrollH = document.body.scrollHeight;
+    if (wScrollY + wInnerH >= bScrollH) {
+        news.init();
+    }
+}
+//函数防抖动
+function debounce(fn, delay) {
+    let timer = null;
+    return function () {
+        let context = this;
+        let args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn.apply(context, args);
+        }, delay);
+    }
 }
 
 function pushPassage() {
@@ -78,12 +94,6 @@ function communication_1() {
 function communication_2() {
     setCookie('sort', false, 1);
     location.href = './communication.jsp?2';
-}
-function work(){
-    location.href = './work.jsp';
-}
-function academic(){
-    location.href = './academic.jsp';
 }
 // 验证账号
 function checkuserName() {
@@ -185,6 +195,7 @@ function checkCookie() {
     login.style.display = 'inline';
     logou.style.display = 'none';
     var sessionText = $.trim(document.getElementById('username').innerHTML);
+    console.log(sessionText);
     flag = getCookie("flag");
     if (flag == "false" && sessionText == 'null') {
         $("#login-Modal").modal();
@@ -203,7 +214,7 @@ function checkCookie() {
         clearCookie("flag");
         location.href = "./" + title + ".jsp?logout=exit";
     } else if (sessionText == 'null') {
-        
+
     } else if (sessionText != 'null') {
         $('#log-status').html(sessionText);
         $('#log-status').show();

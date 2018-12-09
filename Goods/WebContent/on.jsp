@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head lang="zh-CN">
-    <title title='on'>On</title>
+    <title>On</title>
     <meta charset="utf-8">
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>

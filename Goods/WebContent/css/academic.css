@@ -1,0 +1,18 @@
+.left-por {
+    background-color: white;
+}
+
+.right-part {
+    background-color: white;
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px;
+    border-radius: 20px;
+}
+
+.bottom-part {
+    background-color: white;
+}
+.button-dropdown{
+	top:35px;
+}

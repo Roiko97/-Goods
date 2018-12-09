@@ -36,7 +36,7 @@
                     </div>
                 </form>
                 <div class="btn-group col-md-2 pull-right">
-                    <button class="btn btn-lg btn-success" id="submit" onclick="formPush()">发布</button>
+                    <button class="btn btn-lg btn-success" onclick="formPush()">发布</button>
                     <button class="btn btn-default  btn-lg" onclick="formEmpty()">重置</button>
                 </div>
             </div>
