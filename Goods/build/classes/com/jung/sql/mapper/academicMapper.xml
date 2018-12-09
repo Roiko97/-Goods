@@ -41,7 +41,7 @@
 	
 	
 	<select id="getTitleAcademic" resultType="com.jung.entity.Titleacademic">
-		select * from titleacademic;
+		select * from titleacademic where types = #{types};
 	</select>
 	
 	

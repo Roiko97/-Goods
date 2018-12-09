@@ -472,10 +472,10 @@ public class UserDAO {
     	}
     	return list;
     }
-    public List getTitleAcademic() {
+    public List getTitleAcademic(int types) {
     	List<Titleacademic> list = new ArrayList<>();
     	try {
-    		list = getSqlSession().selectList("getTitleAcademic");
+    		list = getSqlSession().selectList("getTitleAcademic",types);
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}finally {

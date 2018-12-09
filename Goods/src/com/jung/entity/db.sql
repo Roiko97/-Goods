@@ -138,7 +138,8 @@ CREATE TABLE titleacademic(
     name varchar(50) not null comment '姓名',
     title varchar(1000) not null comment '标题',
 	stoptime varchar(50) not null comment '截止时间',
-	pagecontect varchar(20000) not null comment '内容'
+	pagecontect varchar(20000) not null comment '内容',
+	types int not null comment ' 1 代表 竞赛信息 2代表科研信息 3代表讲座信息'
 )default charset 'utf8';
 CREATE TABLE academic(
 	id int auto_increment primary key comment '自增长id',

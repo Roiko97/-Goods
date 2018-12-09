@@ -22,9 +22,10 @@ import com.jung.sql.UserDAO;
 public class GetAcademicInfoServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int types = Integer.parseInt(request.getParameter("types"));
 		UserDAO  userDao = new UserDAO();
 		List<Titleacademic> list = new ArrayList<>();
-		list = userDao.getTitleAcademic();
+		list = userDao.getTitleAcademic(types);
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("allAcademic", list);
 		response.getOutputStream().write(jsonObject.toString().getBytes("utf-8"));
