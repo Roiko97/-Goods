@@ -5,18 +5,17 @@ var bussessObj = function () {
 
 bussessObj.prototype.init = function () {
     this.requirItem();
+    window.addEventListener('scroll', debounce(loadInformation, 1000));
 }
 bussessObj.prototype.requirItem = function () {
     var obj = this;
     $.ajax({
         url: 'getNearMerchantServlet',
-        type:'post',
+        type: 'post',
         dataType: 'json',
-        dat: {
-        },
+        dat: {},
         success: function (res) {
             var json = eval(res);
-            console.log(json);
             obj.setObj(json);
         },
         error: function (res) {
@@ -25,13 +24,18 @@ bussessObj.prototype.requirItem = function () {
     });
 }
 
-bussessObj.prototype.setObj = function(obj){
+bussessObj.prototype.setObj = function (obj) {
     this.nearMerchant = obj.nearMerchant;
-    console.log(this.nearMerchant);
-    for(x in this.nearMerchant){
-        this.createItem(x)
+    this.showObj();
+}
+bussessObj.prototype.showObj = function () {
+    let start = this.count;
+    let end = this.count+8 > this.nearMerchant.length ? this.count + 8 : this.nearMerchant.length;
+    console.log(end);
+    for (let i = start; i < end; i++) {
+        console.log(i);
+        this.createItem(i);
     }
-
 }
 bussessObj.prototype.createItem = function (x) {
     var div_1 = document.createElement('div');
@@ -51,7 +55,7 @@ bussessObj.prototype.createItem = function (x) {
     span_3_3.setAttribute('class', 'item-phone');
 
     span_3_1.innerHTML = this.nearMerchant[x].name;
-    span_3_2.innerHTML = '地址:' +  this.nearMerchant[x].address;
+    span_3_2.innerHTML = '地址:' + this.nearMerchant[x].address;
     span_3_3.innerHTML = '电话:' + this.nearMerchant[x].phone;
 
     div_2_2.appendChild(span_3_1);
@@ -61,11 +65,32 @@ bussessObj.prototype.createItem = function (x) {
     div_1.appendChild(div_2_2);
 
     var main = document.getElementsByClassName('flex-content');
-    if(Math.floor(x % 4) == 0 && x > 3){
+    if (Math.floor(x % 4) == 0 && x > 3) {
         var hr = document.createElement('hr');
-        hr.setAttribute('class','hr0');
+        hr.setAttribute('class', 'hr0');
         main[0].appendChild(hr);
     }
     main[0].appendChild(div_1);
     this.count++;
+}
+
+function loadInformation() {
+    let wScrollY = window.screenY;
+    let wInnerH = window.innerHeight;
+    let bScrollH = document.body.scrollHeight;
+    if (wScrollY + wInnerH >= bScrollH) {
+        bussness.showObj();
+    }
+}
+
+function debounce(fn, delay) {
+    let timer = null;
+    return function () {
+        let context = this;
+        let args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn.apply(context, args);
+        }, delay);
+    }
 }

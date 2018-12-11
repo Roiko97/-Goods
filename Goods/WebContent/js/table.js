@@ -306,12 +306,14 @@ function applySubmit() {
 //发布提交
 function submit() {
     let flag = getFlag();
-    let url = "AcademicServlet"+"?flag="+flag+"&types="+types;
+    let url = "AcademicServlet?flag="+flag;
 
     var form = document.createElement("form");
     form.setAttribute("action", url);
     form.setAttribute("method", "post");
     form.style.display = "none";
+
+    map.set('types',types);
     
     //追加参数
     for (var entry of map) {

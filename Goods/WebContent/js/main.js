@@ -22,8 +22,6 @@ function init(title) {
             {
                 news = new newsObj();
                 news.init();
-                let win = window;
-                win.addEventListener('scroll', debounce(loadInformation, 1000));
                 break;
             }
         case "circum":
@@ -59,27 +57,6 @@ function init(title) {
             }
     }
 
-}
-//加载信息
-function loadInformation() {
-    var wScrollY = window.scrollY;
-    var wInnerH = window.innerHeight;
-    var bScrollH = document.body.scrollHeight;
-    if (wScrollY + wInnerH >= bScrollH) {
-        news.init();
-    }
-}
-//函数防抖动
-function debounce(fn, delay) {
-    let timer = null;
-    return function () {
-        let context = this;
-        let args = arguments;
-        clearTimeout(timer);
-        timer = setTimeout(function () {
-            fn.apply(context, args);
-        }, delay);
-    }
 }
 
 function communication_1() {

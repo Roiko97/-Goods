@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
 <html lang="en">
-    
+
 <head>
     <meta charset="utf-8">
     <title title="table">表格</title>
@@ -10,6 +10,7 @@
     <script src="./js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js" type="text/javascript"></script>
     <script src="./js/academic.js" type="text/javascript"></script>
+    <script src="./js/table.js" type="text/javascript"></script>
 </head>
 
 <body onload="init()">
@@ -101,6 +102,6 @@
             </div>
         </div>
     </div>
-    <script src="./js/table.js" type="text/javascript"></script>
 </body>
+
 </html>

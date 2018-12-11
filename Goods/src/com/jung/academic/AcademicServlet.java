@@ -28,6 +28,8 @@ public class AcademicServlet extends HttpServlet {
 		// flag = 0  -> 发布
 		// flag = 1  -> 申请
 		// flag = 2  -> 查看
+		System.out.println(request.getParameter("flag"));
+		
 		int userChoose =  Integer.parseInt(request.getParameter("flag"));
 		// 1 代表 竞赛信息 2代表科研信息 3代表讲座信息
 		//int type = Integer.parseInt(request.getParameter("types"));
