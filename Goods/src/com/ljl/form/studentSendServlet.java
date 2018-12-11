@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import org.json.JSONObject;
 
+import com.jung.ajax.insertOperating;
+import com.jung.entity.Reply;
+import com.jung.entity.Send;
+import com.jung.entity.StudentSend;
 import com.jung.entity.Table;
 import com.jung.entity.User;
 import com.jung.sql.UserDAO;
@@ -20,10 +24,8 @@ import com.jung.sql.UserDAO;
 @WebServlet("/studentSendServlet")
 public class studentSendServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		Map<String, String[]> map = request.getParameterMap();
-        Table user = new Table();
+        Send user = new Send();
 		try {
 			BeanUtils.populate(user, map);
 		} catch (IllegalAccessException e) {
@@ -33,20 +35,8 @@ public class studentSendServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        UserDAO userdao = new UserDAO();
-        Integer userIsTrue = userdao.StudentSend(user);
-        JSONObject jsonObject;
-        if(userIsTrue == 1) //代表二次检验通过
-        {        
-			//此处在进行跳转
-	        System.out.println("提交成功");
-	        //此处flag = 1 暂时没有具体操作
-        	jsonObject = new JSONObject("{result:true}");			
-        	System.out.println(jsonObject.toString());   
-        }else {  //提交失败
-        	System.out.println("提交失败");
-        	jsonObject = new JSONObject("{result:false}");	
-        }
+		insertOperating in = insertOperating.getInstance();
+		JSONObject jsonObject = in.doInsert(user);
     	response.getOutputStream().write(jsonObject.toString().getBytes("utf-8"));     
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jung.entity.Table">
-	<sql id="user_field">
-		Name,Place,Position,content,expand_1,expand_2,expand_3,expand_4,expand_5,expand_6,expand_7,expand_8,expand_9
+	<sql id="user_insert">
+		title,shopname,position,address,linkman,phone,content
 	</sql>
 	<insert id="userSend" useGeneratedKeys="true" keyProperty="id">
-		insert into form(<include refid="user_field"></include>) values (#{Name},#{Place},#{Position},#{content},#{expand_1},#{expand_2},#{expand_3},#{expand_4},#{expand_5},#{expand_6},#{expand_7},#{expand_8},#{expand_9})
+		insert into form(<include refid="user_insert"></include>) values (#{title},#{shopname},#{position},#{address},#{linkman},#{phone},#{content});
 	</insert>
+	
+	<sql id="student_insert">
+		name,phone,age,sex,content
+	</sql>
 	<insert id="StudentSend" useGeneratedKeys="true" keyProperty="id">
-		insert into StudentSend(<include refid="user_field"></include>) values (#{Name},#{Phone},,#{position},#{content},#{expand_1},#{expand_2},#{expand_3},#{expand_4},#{expand_5},#{expand_6},#{expand_7},#{expand_8},#{expand_9})
+		insert into StudentSend(<include refid="student_insert"></include>) values (#{name},#{phone},#{age},#{sex},#{content});
 	</insert>
 	
 	<select id="getUser" resultType="com.jung.entity.Send">
-		select * from Send
-	</select>
-	<select id="getStudent" resultType="com.jung.entity.Table">
-		select * from StudentSend where table_id = #{table_id} and user_id=#{user_id}
+		select * from form 
 	</select>
 	
-
-	
-	<select id="getUserInformation" resultType="com.jung.entity.Table">
-		select * from form where table_id = #{table_id}
+	<select id="getStudnet" resultType="com.jung.entity.StudentSend">
+		select * from StudentSend where id = #{id};
 	</select>
+		
+	<select id = "queryUserSend" resultType  ="com.jung.entity.Table">
+		select * from form where linkname = #{nickname};
+	</select>
+	
+	<select id = "queryStudentSend" resultType  ="com.jung.entity.StudentSend">
+		select * from StudentSend where name = #{name};
+	</select>
+	
+	<resultMap type="com.jung.entity.Table" id="replaceId">
+		<result column="id" property="range"></result>
+	</resultMap>
 </mapper>

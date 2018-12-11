@@ -449,7 +449,7 @@ public class UserDAO {
     	return list;
     }
     
-    public List getStudent(Send user) {
+    public List getStudent(Table user) {
     	List<Table> list = new ArrayList<Table>();
     	try {
     		list = getSqlSession().selectList("getStudent",user);
@@ -461,16 +461,28 @@ public class UserDAO {
     	return list;
     }
     
-    public List getUserInformation(Table user) {
-    	List<Table> list = new ArrayList<Table>();
+    public List<Send> queryUS(Send user){
+    	List<Send> list = new ArrayList<Send>();
     	try {
-    		list = getSqlSession().selectList("getUserInformation",user);
+    		list = getSqlSession().selectList("queryUserSend",user);
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     	}finally {
     		sqlSession.close();
     	}
-    	return list;
+		return list;
+    }
+
+    public List<Table> querySS(Table user){
+    	List<Table> list = new ArrayList<Table>();
+    	try {
+    		list = getSqlSession().selectList("queryStudentSend",user);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+		return list;
     }
     public List getTitleAcademic(int types) {
     	List<Titleacademic> list = new ArrayList<>();

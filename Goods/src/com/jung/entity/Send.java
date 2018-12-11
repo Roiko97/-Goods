@@ -2,31 +2,21 @@ package com.jung.entity;
 
 import java.util.List;
 
-public class Send {
-	String table_id; //表格id
-	String user_id; //商家id
-	String name; //商家名
-	String position; //商家招聘职位
-	String info ; //商家兼职信息
-	List<Table> students; //学生提交的应聘表格
+public class Send extends Table{
+	String title;   //标题
+	List<StudentSend> students; //学生提交的应聘表格
 	
-	public String getUser_id() {
-		return user_id;
+	public String getTitle() {
+		return title;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getTable_id() {
-		return table_id;
+	public String getShopname() {
+		return shopname;
 	}
-	public void setTable_id(String table_id) {
-		this.table_id = table_id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setShopname(String shopname) {
+		this.shopname = shopname;
 	}
 	public String getPosition() {
 		return position;
@@ -34,33 +24,46 @@ public class Send {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public String getInfo() {
-		return info;
+	public String getAddress() {
+		return address;
 	}
-	public void setInfo(String info) {
-		this.info = info;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public List<Table> getStudents() {
+	public String getLinkman() {
+		return linkman;
+	}
+	public void setLinkman(String linkman) {
+		this.linkman = linkman;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public List<StudentSend> getStudents() {
 		return students;
 	}
-	public void setStudents(List<Table> students) {
+	public void setStudents(List<StudentSend> students) {
 		this.students = students;
 	}
+
 	@Override
 	public String toString() {
-		return "Send [table_id=" + table_id + ", name=" + name + ", position=" + position + ", info=" + info
-				 + ", students=" + students + "]";
-	}
-	public Send(String table_id, String name, String position, String info, List<Table> students) {
-		super();
-		this.table_id = table_id;
-		this.name = name;
-		this.position = position;
-		this.info = info;
-		this.students = students;
+		return "Send [title=" + title + ", students=" + students + ", id=" + id + ", shopname=" + shopname
+				+ ", position=" + position + ", address=" + address + ", linkman=" + linkman + ", phone=" + phone
+				+ ", content=" + content + "]";
 	}
 	public Send() {
 		super();
 	}
+	
 	
 }
