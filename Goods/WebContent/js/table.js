@@ -1,19 +1,51 @@
 let map = new Map(); //申请、发布的数据存储
 let num = 0; //DIY行数
 let content_list; //查看、申请表的显示数据
+let id = -1;
+let types = 1;
+const url = location.href;
+let result;
+let academic;
 //初始化
 function init() {
-    let url = location.href + "?flag=0";
     if (url.indexOf('?') < 0 || url.indexOf('flag') < 0) {
         alert("访问失败！");
         location.href = "on.jsp";
     }
-    let result = url.split('?')[1];
-    let value = Number(result.split('=')[1]);
+    result = url.split('?')[1];
+    let flag = Number(result.split('&')[0].split('=')[1]);
     getFlag = function () {
-        return value;
+        return flag;
     };
-    Status();
+    requirList(Status);
+}
+//设置类型
+function changeType(objs){
+    types = objs.value;
+}
+//请求学术数据
+function requirList(callback) {
+    var url = 'GetAcademicInfoServlet';
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'json',
+        data: {
+            'types': Number(types),
+        },
+        success: function (res) {
+            let json = eval(res);
+            if ($.isEmptyObject(json.allAcademic)) {
+                alert('数据异常！');
+                return;
+            }
+            academic = json.allAcademic;
+            callback();
+        },
+        error: function () {
+            alert('网络中断，未能响应服务器请求！');
+        }
+    })
 }
 //表格状态控制
 function Status() {
@@ -26,12 +58,18 @@ function Status() {
             }
         case 1:
             {
+                id = Number(result.split('&')[1].split('=')[1]);
+                types = Number(result.split('&')[2].split('=')[1]);
+                content_list = academic[id];
                 showInput();
                 break;
             }
         case 2:
             {
+                id = Number(result.split('&')[1].split('=')[1]);
+                types = Number(result.split('&')[2].split('=')[1]);
                 seeList();
+                content_list = academic[id];
                 break;
             }
     }
@@ -53,9 +91,11 @@ function hiddenInput() {
 function showInput() {
     $('tfoot').find('button').eq(0).hide();
     $('tfoot').find('button').eq(1).hide();
-    for(let objS of content_list){
-        createRow(objS.name,objS.choose,objS.anotation,objS.select1,objS.select2);
-    }
+    $('tfoot').find('button').eq(2).attr('onclick', "applySubmit()");
+
+    // for(let objS of content_list){
+    //     createRow();
+    // }
 }
 
 //查看详细表格
@@ -74,12 +114,11 @@ function seeList() {
     $('tfoot').find('button').eq(0).hide();
     $('tfoot').find('button').eq(1).hide();
     $('tfoot').find('button').eq(2).hide();
-    for(let objS of content_list){
-        createRow(objS.name,objS.choose,objS.anotation,objS.select1,objS.select2);
+    for (let objS of content_list) {
+        createRow(objS.name, objS.choose, objS.anotation, objS.select1, objS.select2);
     }
 
 }
-
 //判断是否为空
 function isEmpty() {
     let start = $('tbody').find('tr').length - 1;
@@ -89,6 +128,8 @@ function isEmpty() {
     for (let z = start; z >= end; z--) {
         console.log($('tbody').find('tr').eq(z).find('td'));
         for (let i of $('tbody').find('tr').eq(z).find('td'))
+        {
+            console.log(i.children);
             if (i.children.length < 2) {
                 if ($.isEmptyObject(i.children[0].value)) {
                     return true;
@@ -100,6 +141,7 @@ function isEmpty() {
                     }
                 }
             }
+        }
     }
     return false;
 }
@@ -213,7 +255,6 @@ function cancelSet(objS) {
         perant.removeChild(perant.firstChild);
     }
 
-    let td_content = document.createElement('td');
     let select_content = document.createElement('select');
 
     let option_1 = document.createElement('option');
@@ -235,8 +276,7 @@ function cancelSet(objS) {
     select_content.appendChild(option_2);
     select_content.appendChild(option_3);
 
-    td_content.appendChild(select_content);
-    perant.appendChild(td_content);
+    perant.appendChild(select_content);
 }
 //设置map信息
 function setInformation(objS) {
@@ -244,25 +284,35 @@ function setInformation(objS) {
         map.set(objS.name + "_" + num, objS.value);
 
 }
-//提交
-function submit() {
-    let url = getFlag() == 0 ? '发布url' : '申请url';
+//申请提交
+function applySubmit() {
+    let url = "AcademicServlet";
+    let flag = getFlag();
 
     var form = document.createElement("form");
     form.setAttribute("action", url);
     form.setAttribute("method", "post");
     form.style.display = "none";
 
+    map.set('flag', flag);
     map.set('username', $("input[name='username']").val());
     map.set('confact', $("input[name='confact']").val());
     map.set('grade', $("select[name='grade']").val());
     map.set('sex', $("select[name='sex']").val());
     map.set('major', $("select[name='major']").val());
 
-    map.forEach(function (item, key, mapObj) {
-        console.log(item.toString() + "<br />");
-    });
 
+}
+//发布提交
+function submit() {
+    let flag = getFlag();
+    let url = "AcademicServlet"+"?flag="+flag+"&types="+types;
+
+    var form = document.createElement("form");
+    form.setAttribute("action", url);
+    form.setAttribute("method", "post");
+    form.style.display = "none";
+    
     //追加参数
     for (var entry of map) {
         var param_input = document.createElement("input");
@@ -272,17 +322,15 @@ function submit() {
         param_input.setAttribute("value", entry[1]);
         form.appendChild(param_input);
     }
-
+    
     //body追加form表单
     document.body.appendChild(form);
 
-    //  form.submit();//提交(注意，这里的提交调用者是form表单，不是submit按钮)
+    form.submit();//提交(注意，这里的提交调用者是form表单，不是submit按钮)
 }
 //返回
 function out() {
-    let url = location.href;
-    url = url.split('?')[0];
-    location.href = url;
+    window.history.back();
 }
 //删除行
 function removeTr() {
@@ -299,7 +347,7 @@ function removeTr() {
     }
 }
 //创建对应行
-function createRow(nameText, choose, anotation, select1,select2) {
+function createRow(nameText, choose, anotation, select1, select2) {
     num++;
     let tbody = $('tbody');
 
@@ -309,35 +357,35 @@ function createRow(nameText, choose, anotation, select1,select2) {
     let td_anotation = $('<td></td>');
 
     let label = $('<label></label>');
-    label.attr('for', 'name_'+num);
+    label.attr('for', 'name_' + num);
     label.html(nameText);
 
     switch (choose) {
         case 'input':
             let content = $('<input>');
-            content.attr('maxlength','50');
+            content.attr('maxlength', '50');
             break;
         case 'textarea':
             let content = $('<textarea></textarea>');
-            content.attr('cols','10');
-            content.attr('rows','5');
-            content.attr('maxlength','250');
+            content.attr('cols', '10');
+            content.attr('rows', '5');
+            content.attr('maxlength', '250');
             break;
         case 'slect':
             let content = $('<select></select>');
             let option_1 = $('<option></option>');
             let option_2 = $('<option></option>');
-            option_1.attr('value',0);
-            option_2.attr('value',1);
+            option_1.attr('value', 0);
+            option_2.attr('value', 1);
             option_1.html(select1);
             option_2.html(select2);
             break;
     }
-    content.attr('name','name_'+num);
-    content.attr('id','name_'+num);
-    content.attr('class','col-md-8 col-md-offset-2');
-    content.attr('required','required');
-    content.attr('placeholder','请输入');
+    content.attr('name', 'name_' + num);
+    content.attr('id', 'name_' + num);
+    content.attr('class', 'col-md-8 col-md-offset-2');
+    content.attr('required', 'required');
+    content.attr('placeholder', '请输入');
 
     td_name.attr('class', 'text-center');
     td_content.attr('class', 'text-center');

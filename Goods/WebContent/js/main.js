@@ -2,6 +2,7 @@ var news;
 var circum;
 var bussness;
 var communication;
+var academic;
 var flag;
 //Title标题
 var title = (function getTitle() {
@@ -9,10 +10,10 @@ var title = (function getTitle() {
 }());
 /*主要*/
 function start() {
-    createNav('nav');
-    createCode();
-    checkCookie();
-    init(title);
+        createNav('nav');
+        createCode();
+        checkCookie();
+        init(title);
 }
 //初始化
 function init(title) {
@@ -43,11 +44,17 @@ function init(title) {
                 var sort = getCookie('sort');
                 if (sort == 'true') {
                     communication.left_flag = 0;
-                } else if(sort == 'false') {
+                } else if (sort == 'false') {
                     communication.left_flag = 1;
                 }
                 clearCookie('sort');
                 communication.init();
+                break;
+            }
+        case "academic":
+            {
+                academic = new academicObj();
+                academic.init();
                 break;
             }
     }
@@ -75,25 +82,21 @@ function debounce(fn, delay) {
     }
 }
 
-function pushPassage() {
-    location.href = './index.jsp';
-}
-
-function circum() {
-    location.href = './circum.jsp';
-}
-
-function bussness() {
-    location.href = './bussness.jsp';
-}
-
 function communication_1() {
     setCookie('sort', true, 1);
+    let url = 'communication';
     location.href = './communication.jsp?1';
+    if (location.href.indexOf(url) != -1)
+        window.location.replace();
 }
+
 function communication_2() {
     setCookie('sort', false, 1);
+    let url = 'communication';
     location.href = './communication.jsp?2';
+    if (location.href.indexOf(url) != -1)
+        window.location.replace();
+
 }
 // 验证账号
 function checkuserName() {

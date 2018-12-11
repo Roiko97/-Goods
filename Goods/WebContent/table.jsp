@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
-<html lang=en>
+<html lang="en">
     
 <head>
     <meta charset="utf-8">
+    <title title="table">表格</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./js/table.js" type="text/javascript"></script>
+    <script src="./js/academic.js" type="text/javascript"></script>
 </head>
 
 <body onload="init()">
@@ -19,6 +20,14 @@
                 <p class="text-center">填写表格</p>
             </div>
             <div class="col-md-12 table-responsive">
+                <div class="pull-left col-md-6">
+                    <label class="h4" for="types">选择表类型</label>
+                    <select name="types" id="types" onchange="changeType(this)">
+                        <option value="1">竞赛</option>
+                        <option value="2">科研</option>
+                        <option value="3">讲座</option>
+                    </select>
+                </div>
                 <table class="table table-bordered table-hover" summary="摘要" role="table">
                     <thead>
                         <tr>
@@ -92,6 +101,7 @@
             </div>
         </div>
     </div>
+    <script src="./js/table.js" type="text/javascript"></script>
 </body>
 
 </html>

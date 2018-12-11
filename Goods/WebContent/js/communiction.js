@@ -50,28 +50,24 @@ communicationObj.prototype.showList = function (list, num, name, flag, sort) {
     let page = Math.floor(list.length / 2) < 6 ? Math.floor(list.length / 2) : 6;
     var max = list.length;
     var len = num;
-    let morpage = 0;
-    console.log("start:" + len);
+    let morepage = 0;
     if (flag == 0) {
         if (max <= len && max % page != 0) {
-            morpage = max % page;
+            morepage = max % page;
         } else if (len == 0 || len == page) {
             return num;
         }
-        console.log("page:" + page);
         $(name + '> .content').children().remove();
         if (len % page == 0) {
             for (var i = len - page * 2; i < len - page; i++) {
-                console.log(i);
                 this.createList(name + '> .content', i, list, sort);
             }
             num -= page;
         } else{
-            for (var i = len - page - morpage; i <= len - page; i++) {
-                console.log(i);
+            for (var i = len -page - morepage; i < len - 1; i++) {
                 this.createList(name + '> .content', i, list, sort);
             }
-            num = len - page +1;
+            num = len - 1;
         }
     } else {
         if (max <= len) {
@@ -85,7 +81,6 @@ communicationObj.prototype.showList = function (list, num, name, flag, sort) {
             num++;
         }
     }
-    console.log("end:" + num);
     return pageCheck(name, num, max, page);
 }
 

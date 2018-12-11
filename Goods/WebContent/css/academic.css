@@ -9,10 +9,9 @@
     border-width: 2px;
     border-radius: 20px;
 }
-
-.bottom-part {
-    background-color: white;
+#modal-info .modal-dialog {
+    width: 60%;
 }
-.button-dropdown{
-	top:35px;
+#modal-list .modal-dialog {
+    width: 60%;
 }

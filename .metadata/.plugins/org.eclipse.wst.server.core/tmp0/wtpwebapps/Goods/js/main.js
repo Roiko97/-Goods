@@ -2,7 +2,7 @@ var news;
 var circum;
 var bussness;
 var communication;
-var work;
+var academic;
 var flag;
 //Title标题
 var title = (function getTitle() {
@@ -10,10 +10,10 @@ var title = (function getTitle() {
 }());
 /*主要*/
 function start() {
-    createNav('nav');
-    createCode();
-    checkCookie();
-    init(title);
+        createNav('nav');
+        createCode();
+        checkCookie();
+        init(title);
 }
 //初始化
 function init(title) {
@@ -22,6 +22,8 @@ function init(title) {
             {
                 news = new newsObj();
                 news.init();
+                let win = window;
+                win.addEventListener('scroll', debounce(loadInformation, 1000));
                 break;
             }
         case "circum":
@@ -41,49 +43,60 @@ function init(title) {
                 communication = new communicationObj();
                 var sort = getCookie('sort');
                 if (sort == 'true') {
-                    communication.flag = 0;
-                } else if(sort == 'false') {
-                    communication.flag = 1;
+                    communication.left_flag = 0;
+                } else if (sort == 'false') {
+                    communication.left_flag = 1;
                 }
                 clearCookie('sort');
                 communication.init();
                 break;
             }
-            case "work":
+        case "academic":
             {
-                work = new workObj();
-                work.init();
+                academic = new academicObj();
+                academic.init();
                 break;
             }
     }
 
 }
-
-function pushPassage() {
-    location.href = './index.jsp';
+//加载信息
+function loadInformation() {
+    var wScrollY = window.scrollY;
+    var wInnerH = window.innerHeight;
+    var bScrollH = document.body.scrollHeight;
+    if (wScrollY + wInnerH >= bScrollH) {
+        news.init();
+    }
 }
-
-function circum() {
-    location.href = './circum.jsp';
-}
-
-function bussness() {
-    location.href = './bussness.jsp';
+//函数防抖动
+function debounce(fn, delay) {
+    let timer = null;
+    return function () {
+        let context = this;
+        let args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            fn.apply(context, args);
+        }, delay);
+    }
 }
 
 function communication_1() {
     setCookie('sort', true, 1);
+    let url = 'communication';
     location.href = './communication.jsp?1';
+    if (location.href.indexOf(url) != -1)
+        window.location.replace();
 }
+
 function communication_2() {
     setCookie('sort', false, 1);
+    let url = 'communication';
     location.href = './communication.jsp?2';
-}
-function work(){
-    location.href = './work.jsp';
-}
-function academic(){
-    location.href = './academic.jsp';
+    if (location.href.indexOf(url) != -1)
+        window.location.replace();
+
 }
 // 验证账号
 function checkuserName() {
@@ -185,6 +198,7 @@ function checkCookie() {
     login.style.display = 'inline';
     logou.style.display = 'none';
     var sessionText = $.trim(document.getElementById('username').innerHTML);
+    console.log(sessionText);
     flag = getCookie("flag");
     if (flag == "false" && sessionText == 'null') {
         $("#login-Modal").modal();
@@ -203,7 +217,7 @@ function checkCookie() {
         clearCookie("flag");
         location.href = "./" + title + ".jsp?logout=exit";
     } else if (sessionText == 'null') {
-        
+
     } else if (sessionText != 'null') {
         $('#log-status').html(sessionText);
         $('#log-status').show();

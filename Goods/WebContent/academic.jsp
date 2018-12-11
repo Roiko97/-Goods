@@ -66,18 +66,13 @@
         </div>
         <div class="right-part col-md-6">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active" ><a onclick="academic.competition()">竞赛</a></li>
-                <li role="presentation" ><a onclick="academic.science()">科研</a></li>
-                <li role="presentation" ><a onclick="academic.chair()">讲座</a></li>
-                <button class="btn btn-success" onclick="location.href='table.jsp?flag=0'">发布</button>
-                <button class="btn btn-warning" onclick="location.href='table.jsp?flag=1'">申请</button>
-                <button class="btn btn-default" onclick="seeList.apply(academic,[])">查看</button>
+                <li role="presentation" class="active" ><a href="javascript:onclick=academic.competition()">竞赛</a></li>
+                <li role="presentation" ><a href = "javascript:onclick=academic.science()">科研</a></li>
+                <li role="presentation" ><a href = "javascript:onclick=academic.chair()">讲座</a></li>
+                <button class="btn btn-success" onclick="javascript:location.href='./table.jsp?flag=0'">发布</button>
+                <!-- <button class="btn btn-default" onclick="seeList.apply(academic,[])">查看</button> -->
             </ul>
-            <ul class="list-group .content">
-                <li class="list-group-item"><span class="badge">学术</span><a href="#">321654</a></li>
-                <li class="list-group-item"><span class="badge">学术</span><a href="#">321654</a></li>
-                <li class="list-group-item"><span class="badge">学术</span><a href="#">321654</a></li>
-                <li class="list-group-item"><span class="badge">学术</span><a href="#">321654</a></li>
+            <ul class="list-group content">
             </ul>
             <ul class="pag-button pager">
                     <li class=""><a onclick="previous.apply(academic,[0])">上一页</a></li>
@@ -165,20 +160,20 @@
     
                             </ul>
                             <ul class="pager">
-                                <li class=""><a href="javascript:onclick= previous.apply(communication,[1])">上一页</a></li>
-                                <li><a href="javascript:onclick= next.apply(communication,[1])">下一页</a></li>
+                                <li class=""><a href="javascript:onclick= previous.apply(academic,[1])">上一页</a></li>
+                                <li><a href="javascript:onclick= next.apply(academic,[1])">下一页</a></li>
                             </ul>
                         </div>
                         <div class="col-md-2 col-md-offset-1">
                             <ul class="list-group">
-                                <a href="javascript:onclick=sort.apply(communication,[1])" class="btn btn-info list-group-item">交流</a>
-                                <a href="javascript:onclick=sort.apply(communication,[0])" class="btn btn-info list-group-item">失物招领</a>
+                                <a href="javascript:onclick=sort.apply(academic,[1])" class="btn btn-info list-group-item">竞赛</a>
+                                <a href="javascript:onclick=sort.apply(academic,[2])" class="btn btn-info list-group-item">科研</a>
+                                <a href="javascript:onclick=sort.apply(academic,[3])" class="btn btn-info list-group-item">讲座</a>
                             </ul>
                         </div>
                     </div>
-    
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onclick="javascript:location.href='communication.jsp?1'">关闭</button>
+                        <button type="button" class="btn btn-default" onclick="javascript:location.href='academic.jsp?1'">关闭</button>
                     </div>
                 </div>
             </div>
@@ -199,21 +194,11 @@
                         <p class="text-center">同学都争先恐后。这作文</p>
                     </div>
                     <div class="modal-right col-md-4">
-                        <div class="head">
-                            <h3 class="text-right">评论</h3>
-                            <button class="btn btn-success" onclick="jQuery:$('.comment-add').show();">回复<span class="glyphicon glyphicon-plus-sign"></span></button>
-                            <div class="comment-add">
-                                <form class="form-group">
-                                    <textarea type="text" class="form-control" id="comment-cont" name="reply"
-                                        placeholder="请输入评论" value="" maxlength="400"></textarea>
-                                </form>
-                                <div class="btn-group">
-                                    <button class=" btn btn-success" id="submit">提交</button>
-                                    <button class=" btn btn-default" onclick="jQuery:$('.comment-add').hide();">取消</button>
-                                </div>
-                            </div>
+                        <div class="apply">
+                            <h3>申请</h3>
+                            <p>点击按钮填写申请表</p>
+                            <button class="btn btn-success" id="apply">申请<span class="glyphicon glyphicon-plus-sign"></span></button>
                         </div>
-                        <hr>
                         <ul class="list-group" id="comment">
                         </ul>
                     </div>

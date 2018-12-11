@@ -8,11 +8,11 @@ body {
     top: 80px;
 }
 
-.left-list {
+.left-por {
     background-color: white;
 }
 
-.right-list {
+.main-part {
     background-color: white;
     border-style: solid;
     border-color: darkgray;
