@@ -103,5 +103,4 @@
     </div>
     <script src="./js/table.js" type="text/javascript"></script>
 </body>
-
 </html>
