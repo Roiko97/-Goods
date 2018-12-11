@@ -80,7 +80,7 @@ academicObj.prototype.showList = function (list, num, name, flag, sort) {
             }
             num -= page;
         } else{
-            for (var i = len -page - morepage; i < len - 1; i++) {
+            for (var i = len -page - morepage; i < len - morepage; i++) {
                 this.createList(name + '> .content', i, list, sort);
             }
             num = len - 1;
