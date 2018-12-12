@@ -28,9 +28,10 @@ public class AcademicServlet extends HttpServlet {
 		// flag = 0  -> 发布
 		// flag = 1  -> 申请
 		// flag = 2  -> 查看
-		System.out.println(request.getParameter("flag"));
+		//System.out.println(request.getParameter("flag"));
 		
 		int userChoose =  Integer.parseInt(request.getParameter("flag"));
+		String nickname = request.getSession().getAttribute("userID").toString();
 		// 1 代表 竞赛信息 2代表科研信息 3代表讲座信息
 		//int type = Integer.parseInt(request.getParameter("types"));
 		UserDAO userDAO = new UserDAO();
@@ -40,9 +41,12 @@ public class AcademicServlet extends HttpServlet {
 			Academic academic = new Academic();
 			try {
 				BeanUtils.populate(academic, map);
+				academic.setAnnouncer(nickname);
 				int isTrue = userDAO.insertAcademic(academic);
 				if(isTrue!=0) {
+					System.out.println("执行到这里");
 					int id = userDAO.getAcademicId(academic);
+					System.out.println(id);
 					List<DependAcademic> list =  academic.getDependAcademic();
 					for(int i=0;i<list.size();i++) {
 						list.get(i).setMark(id);
@@ -79,7 +83,6 @@ public class AcademicServlet extends HttpServlet {
 			}
 		}else if(userChoose ==2) { //查看个人发布内容
 			List<Application> list = new ArrayList<>();			
-			String nickname = request.getSession().getAttribute("userID").toString();
 			int id = Integer.parseInt(request.getParameter("mark"));
 			Application application = new Application(id,nickname);
 			list = userDAO.selectApplication(application);

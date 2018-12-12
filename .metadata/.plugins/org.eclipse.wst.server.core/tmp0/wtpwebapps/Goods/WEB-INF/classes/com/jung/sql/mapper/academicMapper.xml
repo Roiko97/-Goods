@@ -3,7 +3,7 @@
 <mapper namespace="com.jung.entity.Academic">
 
 	<select id="getAcademicId" resultType="com.jung.entity.Academic">
-		select id from academic where announcer ={#announcer} and releasetime ={#releasetime} and validity = 1
+		select id from academic where announcer =#{announcer} and releasetime =#{releasetime} and validity =1
 	</select>
 	
 	<sql id = "insertAd">

@@ -13,6 +13,12 @@ public class Academic {
 	List<DependAcademic> dependAcademic ; //ÒÀ¸½ÄÚÈİ
 	int mark;
 	
+	@Override
+	public String toString() {
+		return "Academic [id=" + id + ", types=" + types + ", announcer=" + announcer + ", releasetime=" + releasetime
+				+ ", pagecontect=" + pagecontect + ", validity=" + validity + ", dependAcademic=" + dependAcademic
+				+ ", mark=" + mark + "]";
+	}
 	public List<DependAcademic> getDependAcademic() {
 		return dependAcademic;
 	}
