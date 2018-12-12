@@ -24,22 +24,20 @@ circumObj.prototype.pushInformaion = function () {
 }
 //获取json对象
 function setObj(select) {
-    console.log(this.merchant);
     var sort = new Array();
     this.Count == 0;
     $('#content').children().remove();
-    console.log($('#content').children());
     if ($.isEmptyObject(this.attractions)) {
         alert("获取数据失败");
     } else if(select == 0){
         sort = this.attractions.concat(this.merchant);
-        for (var i = 0; i < sort.length; i++) {
+        for (var i = 0; i < sort.length ;i++) {
             this.createNode(i);
         }
         this.setInformation(sort);
     }else if(select == 1){
         sort = this.attractions;
-        for (var i = 0; i < sort.length; i++) {21
+        for (var i = 0; i < sort.length; i++) {
             this.createNode(i);
         }
         this.setInformation(sort);
@@ -80,7 +78,6 @@ circumObj.prototype.setInformation = function (sort) {
     let content = $('#content > ul').find(".post-content");
     let address = $('#content > ul').find("address");
     let other = $('#content > ul').find(".post-other");
-    console.log(sort);
     while (count < sort.length) {
         content.eq(count)[0].children[0].innerHTML = ($.isEmptyObject(sort[randoms[count]]) ? "信息获取失败" : sort[randoms[count]].info);
         post_name.eq(count)[0].children[0].innerHTML = ($.isEmptyObject(sort[randoms[count]]) ? "信息获取失败" : sort[randoms[count]].name);

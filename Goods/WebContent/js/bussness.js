@@ -30,10 +30,8 @@ bussessObj.prototype.setObj = function (obj) {
 }
 bussessObj.prototype.showObj = function () {
     let start = this.count;
-    let end = this.count+8 > this.nearMerchant.length ? this.count + 8 : this.nearMerchant.length;
-    console.log(end);
+    let end = this.count + 8 <= this.nearMerchant.length ? this.count + 8 : this.nearMerchant.length;
     for (let i = start; i < end; i++) {
-        console.log(i);
         this.createItem(i);
     }
 }

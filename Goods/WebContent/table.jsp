@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <title title="table">表格</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/table.css" type="text/css">
     <script src="./js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js" type="text/javascript"></script>
     <script src="./js/academic.js" type="text/javascript"></script>
@@ -15,7 +16,7 @@
 
 <body onload="init()">
     <div class="container row">
-        <div class="col-md-12 col-md-offset-4 bg-info">
+        <div class="main col-md-12 col-md-offset-4 bg-info">
             <div class="page-header">
                 <h3 class="text-center">发布</h3>
                 <p class="text-center">填写表格</p>

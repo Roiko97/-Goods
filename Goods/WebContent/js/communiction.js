@@ -229,7 +229,7 @@ function sendReply(id) {
     let content = $('#comment-cont').val();
     const date = new Date();
     const year = date.getUTCFullYear();
-    const month = date.getUTCMonth();
+    const month = date.getUTCMonth()+1;
     const day = date.getUTCDate();
     const time = year + "年" + month + "月" + day + "日";
     $.ajax({

@@ -47,6 +47,30 @@ function requirList(callback) {
         }
     })
 }
+//请表格数据
+function requirTable(callback) {
+    let url = 'AcademicServlet?flag='+Number(2);
+    $.ajax({
+        url: url,
+        type: 'post',
+        dataType: 'json',
+        data: {
+            "mark":Number(content_list.id),
+        },
+        success: function (res) {
+            let json = eval(res);
+            console.log(json);
+            if ($.isEmptyObject(json)) {
+                alert('数据异常！');
+                return;
+            }
+            // callback();
+        },
+        error: function () {
+            alert('网络中断，未能响应服务器请求！');
+        }
+    })
+}
 //表格状态控制
 function Status() {
     const flag = getFlag();
@@ -62,6 +86,10 @@ function Status() {
                 types = Number(result.split('&')[2].split('=')[1]);
                 content_list = academic[id];
                 showInput();
+                console.log(id);
+                console.log(types);
+                console.log(content_list);
+                requirTable(createRow);
                 break;
             }
         case 2:
@@ -305,6 +333,15 @@ function applySubmit() {
 }
 //发布提交
 function submit() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth()+1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+    const time = year + "年" + month + "月" + day + "日"+hour+"时"+minute+"分"+second+"秒";
+    alert(time);
     let flag = getFlag();
     let url = "AcademicServlet?flag="+flag;
 
@@ -313,6 +350,7 @@ function submit() {
     form.setAttribute("method", "post");
     form.style.display = "none";
 
+    map.set('releasetime',time);
     map.set('types',types);
     
     //追加参数
@@ -349,8 +387,7 @@ function removeTr() {
     }
 }
 //创建对应行
-function createRow(nameText, choose, anotation, select1, select2) {
-    num++;
+function createRow(objS) {
     let tbody = $('tbody');
 
     let tr = $('<tr></tr>');

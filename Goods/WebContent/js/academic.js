@@ -157,6 +157,7 @@ academicObj.prototype.requirList = function (types) {
         },
         success: function (res) {
             let json = eval(res);
+            console.log(json);
             if ($.isEmptyObject(json.allAcademic)) {
                 alert('数据异常！');
                 return;
