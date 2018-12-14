@@ -1,5 +1,5 @@
 body {
-	background-image:url(../img/background.png);
+	background-image:url(../src/background/11.jpg);
 }
 
 .circum-body {
@@ -45,7 +45,7 @@ li {
 }
 
 .post-head {
-    background: white;
+    background: rgba(235, 238, 235, 0.4);
 }
 
 .post-img {
@@ -80,7 +80,7 @@ li {
     border: 1px solid rgba(66, 255, 66, 0);
     text-indent: 2em;
     margin-top: 10px;
-    background: white;
+    background: rgba(235, 238, 235, 0.4);
 }
 
 .post-footer {
@@ -89,7 +89,7 @@ li {
 }
 
 .post-footer address {
-    background: white;
+    background: rgba(235, 238, 235, 0.8);
 }
 
 .tag-cloud {

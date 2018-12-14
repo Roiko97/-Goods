@@ -1,6 +1,6 @@
 body{
 	position: relative;
-    background-color: #ebebeb;
+    background-image: url(../src/background/22.jpg);
     background-size: 100% auto;
     background-origin:content-box;
     background-repeat: repeat-y;

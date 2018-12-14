@@ -146,8 +146,8 @@
             </div>
         </div>
     </div>
-    <!--information show in Modal-->
-    <div id="modal-list" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modallabel">
+    <!-- information show in Modal -->
+    <!-- <div id="modal-list" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modallabel">
             <div class="modal-dialog" role="document">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -177,7 +177,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     <!--information show in Modal-->
     <div id="modal-info" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modallabel">
         <div class="modal-dialog" role="document">

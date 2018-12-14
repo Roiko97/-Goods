@@ -34,21 +34,21 @@
     <div class="row">
         <div class="jSlider col-md-6 col-md-offset-3" id="slider1" data-loop="true">
             <div>
-                <img src="images/photo1.jpg" alt="sample photo">
+                <img src="src/IndexImage/1.jpg" alt="sample photo">
             </div>
             <div>
-                <img src="images/photo2.jpg" alt="sample photo">
+                <img src="src/IndexImage/2.jpg" alt="sample photo">
                 <div class="sub-content-sample">
                 </div>
             </div>
             <div>
-                <img src="images/photo3.jpg" alt="sample photo">
+                <img src="src/IndexImage/3.jpg" alt="sample photo">
             </div>
             <div>
-                <img src="images/photo4.jpg" alt="sample photo">
+                <img src="src/IndexImage/4.jpg" alt="sample photo">
             </div>
             <div>
-                <img src="images/photo5.jpg" alt="sample photo">
+                <img src="src/IndexImage/5.jpg" alt="sample photo">
             </div>
             
         </div>
