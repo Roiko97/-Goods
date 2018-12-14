@@ -48,7 +48,8 @@ CREATE TABLE Merchant(
     address varchar(5000) comment '商铺地址',
     phone varchar(20) comment '商铺电话',
     info varchar(10000) comment '店铺介绍',
-    near int default 0 comment '是否是周边商户，0表示是，1表示不是'
+    near int default 0 comment '是否是周边商户，0表示是，1表示不是',
+	pic varchar(10000) comment '图片'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE food(
@@ -56,7 +57,8 @@ CREATE TABLE food(
 	merchant_id varchar(10) not null comment '商铺唯一标识号',
 	name varchar(2000) not null comment '食物名称',
 	price varchar(10) not null comment '食物价格',
-	info varchar(10000) comment '食品描述'
+	info varchar(10000) comment '食品描述',
+    pic varchar(10000) comment '图片'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE attractions(
@@ -64,7 +66,8 @@ CREATE TABLE attractions(
 	name varchar(50) not null comment '景点名称',
     address varchar(5000) comment '景点地址',
 	price varchar(10) comment '游玩价格',
-	info varchar(10000) comment '景点介绍'
+	info varchar(10000) comment '景点介绍',
+	pic varchar(10000) comment '图片'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE LostAndFound(

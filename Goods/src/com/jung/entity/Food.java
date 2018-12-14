@@ -10,6 +10,14 @@ public class Food {
 	String  name; //食物的名称
 	String price; //食物的价格
 	String info ; //食物的介绍信息
+	String pic;
+	
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 	public String getMerchant_id() {
 		return merchant_id;
 	}
@@ -34,16 +42,19 @@ public class Food {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	
 	@Override
 	public String toString() {
-		return "Food [merchant_id=" + merchant_id + ", name=" + name + ", price=" + price + ", info=" + info + "]";
+		return "Food [merchant_id=" + merchant_id + ", name=" + name + ", price=" + price + ", info=" + info + ", pic="
+				+ pic + "]";
 	}
-	public Food(String merchant_id, String name, String price, String info) {
+	public Food(String merchant_id, String name, String price, String info, String pic) {
 		super();
 		this.merchant_id = merchant_id;
 		this.name = name;
 		this.price = price;
 		this.info = info;
+		this.pic = pic;
 	}
 	public Food() {
 		super();

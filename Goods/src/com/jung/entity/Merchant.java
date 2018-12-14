@@ -14,6 +14,14 @@ public class Merchant {
 	String phone; //商户电话
 	String info;//店铺介绍
 	List<Food> food;  //商户经营食物
+	String pic;
+	
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 	public String getMerchant_id() {
 		return merchant_id;
 	}
@@ -53,7 +61,7 @@ public class Merchant {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	public Merchant(String merchant_id, String name, String address, String phone, String info, List<Food> food) {
+	public Merchant(String merchant_id, String name, String address, String phone, String info, List<Food> food,String pic) {
 		super();
 		this.merchant_id = merchant_id;
 		this.name = name;
@@ -61,6 +69,7 @@ public class Merchant {
 		this.phone = phone;
 		this.info = info;
 		this.food = food;
+		this.pic = pic;
 	}
 	
 

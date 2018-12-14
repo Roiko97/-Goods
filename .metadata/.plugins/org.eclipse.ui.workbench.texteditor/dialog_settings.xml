@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getTitleAcademic" key="selection"/>
+		<item value="insertAcademic" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="insertAcademic"/>
+			<item value="getAcademicId"/>
+			<item value="Academic"/>
+			<item value="announcer"/>
 			<item value="getTitleAcademic"/>
 			<item value="getAcademic"/>
 			<item value="学生"/>

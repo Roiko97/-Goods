@@ -10,6 +10,7 @@ public class Attractions {
 	String address; //景点地址
 	String price; //游玩价格
 	String info ;//景点介绍
+	String pic;
 	public String getName() {
 		return name;
 	}
@@ -34,16 +35,26 @@ public class Attractions {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	
+
 	@Override
 	public String toString() {
-		return "Attractions [name=" + name + ", address=" + address + ", price=" + price + ", info=" + info + "]";
+		return "Attractions [name=" + name + ", address=" + address + ", price=" + price + ", info=" + info + ", pic="
+				+ pic + "]";
 	}
-	public Attractions(String name, String address, String price, String info) {
+	public Attractions(String name, String address, String price, String info, String pic) {
 		super();
 		this.name = name;
 		this.address = address;
 		this.price = price;
 		this.info = info;
+		this.pic = pic;
+	}
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 	public Attractions() {
 		super();
