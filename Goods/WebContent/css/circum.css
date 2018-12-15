@@ -46,12 +46,12 @@ li {
 }
 
 .post-head {
-    background: rgba(235, 238, 235, 0.4);
+    width: 80%;
 }
 
 .post-img {
-    width: 50%;
-    height: 150px;
+    width: 60%;
+    height: 200px;
 }
 
 .post-img img {
@@ -82,7 +82,8 @@ li {
     border: 1px solid rgba(66, 255, 66, 0);
     text-indent: 2em;
     margin-top: 10px;
-    background: rgba(235, 238, 235, 0.4);
+    background: rgba(235, 238, 235, 0.6);
+    border-radius: 20px;
 }
 
 .post-footer {
@@ -91,7 +92,7 @@ li {
 }
 
 .post-footer address {
-    background: rgba(235, 238, 235, 0.8);
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .tag-cloud {

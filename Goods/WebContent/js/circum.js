@@ -115,7 +115,7 @@ circumObj.prototype.createNode = function (count) {
     var post_img = $('<div></div>');
     var post_img_content = $('<img>')
 
-    post_img_content.addClass('img-rounded img-responsive img-circle');
+    post_img_content.addClass('img-rounded img-circle');
     post_img.addClass('post-img');
 
     post_img_content.appendTo(post_img);
