@@ -141,7 +141,7 @@ function lafShow() {
 function comShow(array, id) {
     $('#modal-info').find('.modal-right').show();
     $('#modal-info').find('.modal-left').attr('class', 'modal-left col-md-8');
-    for (list of arry[id].reply) {
+    for (list of array[id].reply) {
         var div = $('<div></div>');
         div.attr('class', 'list-group-item');
 
