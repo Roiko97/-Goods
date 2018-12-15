@@ -1,9 +1,13 @@
+body{
+    background-image:url(../src/background/33.jpg);
+    background-attachment: fixed;
+}
 .flex-content {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     width: 80%;
-    background-color: lightgray;
+    background-color: rgba(108, 112, 112, 0.4);
     -ms-flex-pack: distribute;
     justify-content: space-around;
     -webkit-justify-content: space-around;

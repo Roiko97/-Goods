@@ -22,7 +22,7 @@ import com.jung.entity.Send;
 import com.jung.entity.Table;
 import com.jung.entity.Titleacademic;
 import com.jung.entity.User;
-
+import com.jung.entity.StudentSend;
 /**
  * 	to 具体数据库操作
  * @author jung
@@ -450,7 +450,7 @@ public class UserDAO {
     }
     
     public List getStudent(Table user) {
-    	List<Table> list = new ArrayList<Table>();
+    	List<StudentSend> list = new ArrayList<>();
     	try {
     		list = getSqlSession().selectList("getStudent",user);
     	}catch(Exception e) {
@@ -473,8 +473,8 @@ public class UserDAO {
 		return list;
     }
 
-    public List<Table> querySS(Table user){
-    	List<Table> list = new ArrayList<Table>();
+    public List<StudentSend> querySS(Send user){
+    	List<StudentSend> list = new ArrayList<>();
     	try {
     		list = getSqlSession().selectList("queryStudentSend",user);
     	}catch(Exception e) {
@@ -483,6 +483,31 @@ public class UserDAO {
     		sqlSession.close();
     	}
 		return list;
+    }
+
+    public List<StudentSend> getStudentSendById(String id){
+    	List<StudentSend> list = new ArrayList<>();
+    	try {
+    		list = getSqlSession().selectList("getStudentSendById",id);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    
+    public List<Send> getSendByTarget(int target) {
+    	List<Send> list = new ArrayList<>();
+    	//Send send = new Send();
+    	try {
+    		list = getSqlSession().selectList("getSendByTarget",target);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
     }
     public List getTitleAcademic(int types) {
     	List<Titleacademic> list = new ArrayList<>();

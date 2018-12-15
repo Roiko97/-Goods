@@ -1,19 +1,33 @@
 body {
-    background-image: url(../src/background/55.jpg);
+    background-image:url(../src/background/55.jpg);
+background-attachment: fixed;
 }
+
 .main {
-    background-color: rgba(240, 248, 255, 0.514);
-    position: relative;
-    width: 80%;
-    left:-10%;
+    position: absolute;
+    width: 100%;
     top: 80px;
 }
 
-.left-por {
+.left-list {
+    padding: 25px;
     background-color: white;
+    border-radius: 25px;
 }
-
-.main-part {
+.button{
+    text-align: center;
+    border-radius: 5px;
+}
+.h2{
+	margin-top: 0px !important;
+}
+.p{
+	margin-top: 10px !important;
+}
+.look-button{
+	margin-top: -15px;
+}
+.right-list {
     background-color: white;
     border-style: solid;
     border-color: darkgray;
@@ -23,4 +37,11 @@ body {
 
 .bottom-part {
     background-color: white;
+}
+#modal-list .modal-dialog{
+	width: 50%;
+}
+#comment{
+	height: 350px;
+	overflow-y: scroll;
 }

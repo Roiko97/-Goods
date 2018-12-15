@@ -3,7 +3,7 @@ package com.jung.entity;
 import java.util.List;
 
 public class Table {
-	int id;
+	int table_id;
 	String title;   //标题
 	String shopname;    //商户名
 	String position;   //商户招聘职位
@@ -13,11 +13,12 @@ public class Table {
 	String content;   //个人简介
 	
 	
-	public int getId() {
-		return id;
+	
+	public int getTable_id() {
+		return table_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setTable_id(int table_id) {
+		this.table_id = table_id;
 	}
 	public String getTitle() {
 		return title;
@@ -63,13 +64,13 @@ public class Table {
 	}
 	@Override
 	public String toString() {
-		return "Table [id=" + id + ", title=" + title + ", shopname=" + shopname + ", position=" + position
+		return "Table [table_id=" + table_id + ", title=" + title + ", shopname=" + shopname + ", position=" + position
 				+ ", address=" + address + ", linkman=" + linkman + ", phone=" + phone + ", content=" + content + "]";
 	}
-	public Table(int id, String title, String shopname, String position, String address, String linkman, String phone,
-			String content) {
+	public Table(int table_id, String title, String shopname, String position, String address, String linkman,
+			String phone, String content) {
 		super();
-		this.id = id;
+		this.table_id = table_id;
 		this.title = title;
 		this.shopname = shopname;
 		this.position = position;
@@ -79,11 +80,8 @@ public class Table {
 		this.content = content;
 	}
 	public Table() {
-		super();
+		
 	}
 	
-	
-	
-
 	
 }

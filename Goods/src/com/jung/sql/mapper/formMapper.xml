@@ -9,29 +9,44 @@
 	</insert>
 	
 	<sql id="student_insert">
-		name,phone,age,sex,content
+		id,name,phone,age,sex,content
 	</sql>
 	<insert id="StudentSend" useGeneratedKeys="true" keyProperty="id">
-		insert into StudentSend(<include refid="student_insert"></include>) values (#{name},#{phone},#{age},#{sex},#{content});
+		insert into StudentSend(<include refid="student_insert"></include>) values (#{id},#{name},#{phone},#{age},#{sex},#{content});
 	</insert>
 	
 	<select id="getUser" resultType="com.jung.entity.Send">
 		select * from form 
 	</select>
 	
-	<select id="getStudnet" resultType="com.jung.entity.StudentSend">
-		select * from StudentSend where id = #{id};
+	<select id="getStudent" resultType="com.jung.entity.StudentSend">
+		select * from StudentSend where target = #{id};
 	</select>
 		
-	<select id = "queryUserSend" resultType  ="com.jung.entity.Table">
-		select * from form where linkname = #{nickname};
+	<select id ="getUS" resultType="com.jung.entity.Send">
+		select * from form where id = #{user};
+	</select>
+	
+	<select id = "queryUserSend" resultType  ="com.jung.entity.Send">
+		select * from form where linkman = #{linkman};
 	</select>
 	
 	<select id = "queryStudentSend" resultType  ="com.jung.entity.StudentSend">
-		select * from StudentSend where name = #{name};
+		select * from StudentSend where name = #{linkman};
 	</select>
 	
 	<resultMap type="com.jung.entity.Table" id="replaceId">
 		<result column="id" property="range"></result>
 	</resultMap>
+	
+	
+	<select id ="getStudentSendById" resultType  ="com.jung.entity.StudentSend">
+		select * from StudentSend where name = #{id}
+	</select>
+	
+	
+	<select id ="getSendByTarget" resultType ="com.jung.entity.Send">
+		select * from form where table_id = #{target}
+	</select>
+
 </mapper>

@@ -1,5 +1,6 @@
 body {
-    background-color: beige;
+    background-image: url(../src/background/66.jpg);
+    background-attachment: fixed;
 }
 
 .main {
@@ -7,10 +8,17 @@ body {
     top: 80px;
     width: 100%;
 }
-
+.jumbotron{
+    background-image: url(../src/communication/head.jpg);
+    background-repeat: no-repeat;
+    background-size: 92% 40%;
+    background-attachment: fixed;
+    border-radius: 20px;
+}
 .left-part {
     color: white;
     background-color: dimgrey;
+    border-radius: 20px;
 }
 .left-part ul{
     color: black;

@@ -56,7 +56,7 @@
             <div class="row">
                 <main class="col-md-6 col-md-offset-3" id="main">
                 </main>
-                <div class="advertising col-md-2">
+                <!-- <div class="advertising col-md-2">
                     <aside class="col-md-12 sidebar">
                         <div class="widget">
                             <h4 class="title">联系</h4>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </aside>
-                </div>
+                </div> -->
             </div>
         </section>
     </div>
@@ -127,7 +127,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="src/Logo.png" class="img-responsive" alt="LOGO">
+                            <img src="src/LOGO/Logo.png" class="img-responsive" alt="LOGO">
                         </div>
                     </div>
                     <div class="row">

@@ -83,7 +83,7 @@
                         </div>
                         <!--LOGO-->
                         <div class="col-md-4">
-                            <img src="src/Logo.png" class="img-responsive" alt="LOGO">
+                            <img src="src/LOGO/Logo.png" class="img-responsive" alt="LOGO">
                         </div>
                         <!--表单按钮-->
                         <div class="row">

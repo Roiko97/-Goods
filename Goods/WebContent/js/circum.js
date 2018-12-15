@@ -78,9 +78,11 @@ circumObj.prototype.setInformation = function (sort) {
     let content = $('#content > ul').find(".post-content");
     let address = $('#content > ul').find("address");
     let other = $('#content > ul').find(".post-other");
+    let img = $('#content > ul').find(".post-img");
     while (count < sort.length) {
         content.eq(count)[0].children[0].innerHTML = ($.isEmptyObject(sort[randoms[count]]) ? "信息获取失败" : sort[randoms[count]].info);
         post_name.eq(count)[0].children[0].innerHTML = ($.isEmptyObject(sort[randoms[count]]) ? "信息获取失败" : sort[randoms[count]].name);
+        img.eq(count)[0].children[0].setAttribute('src',($.isEmptyObject(sort[randoms[count]])?'':sort[randoms[count]].pic));
         address.eq(count)[0].innerHTML = "地址:" + ($.isEmptyObject(sort[randoms[count]]) ? "无" : sort[randoms[count]].address);
         if (randoms[count] < randoms.length / 2) {
             other.eq(count)[0].children[0].innerHTML = "<abbr title='Price'>价格：</abbr>" + ($.isEmptyObject(sort[randoms[count]]) ? "暂无" : sort[randoms[count]].price);
@@ -114,7 +116,6 @@ circumObj.prototype.createNode = function (count) {
     var post_img_content = $('<img>')
 
     post_img_content.addClass('img-rounded img-responsive img-circle');
-    post_img_content.attr('src', './img/02.png');
     post_img.addClass('post-img');
 
     post_img_content.appendTo(post_img);
@@ -147,6 +148,7 @@ circumObj.prototype.createNode = function (count) {
     var text = $('<p></p>');
 
     post_content.addClass("post-content");
+    post_content.addClass("text-left");
 
     text.appendTo(post_content);
     post_content.appendTo(article);

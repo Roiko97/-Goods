@@ -1,5 +1,6 @@
 body{
     background-image:url(../src/background/33.jpg);
+    background-attachment: fixed;
 }
 .flex-content {
     display: -webkit-box;
@@ -52,23 +53,6 @@ body{
     transition: 0.25s ease;
     background: white;
 }
-
-.item-img-one {
-    background: url(../images/photo1.jpg);
-}
-
-.item-img-two {
-    background: url(../images/photo2.jpg);
-}
-
-.item-img-three {
-    background: url(../images/photo3.jpg);
-}
-
-.item-img-four {
-    background: url(../images/photo4.jpg);
-}
-
 .item-img {
     background-size: 100% 100%;
 }

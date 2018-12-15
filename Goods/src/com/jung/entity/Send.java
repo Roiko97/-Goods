@@ -30,12 +30,6 @@ public class Send extends Table{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getLinkman() {
-		return linkman;
-	}
-	public void setLinkman(String linkman) {
-		this.linkman = linkman;
-	}
 	public String getPhone() {
 		return phone;
 	}
@@ -54,16 +48,17 @@ public class Send extends Table{
 	public void setStudents(List<StudentSend> students) {
 		this.students = students;
 	}
-
 	@Override
 	public String toString() {
-		return "Send [title=" + title + ", students=" + students + ", id=" + id + ", shopname=" + shopname
+		return "Send [title=" + title + ", students=" + students + ", id=" + table_id + ", shopname=" + shopname
 				+ ", position=" + position + ", address=" + address + ", linkman=" + linkman + ", phone=" + phone
 				+ ", content=" + content + "]";
 	}
+	
 	public Send() {
 		super();
 	}
+	
 	
 	
 }

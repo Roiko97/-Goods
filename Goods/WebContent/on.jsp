@@ -24,7 +24,7 @@
             <div class="Goods-content-cell-whiteBlock">
                 <div class="Goods-content-cell-whiteBlockcontent">
                     <div class="whiteBlockcontent-Header">
-                        <img class="imgLogo" src="src/LOGO1.gif" />
+                        <img class="imgLogo" src="./src/LOGO/LOGO1.gif" />
                     </div>
                     <h1 class="whiteBlockcontent-Title">发现校园周边新鲜事</h1>
                     <div class="whiteBlockcontentform">

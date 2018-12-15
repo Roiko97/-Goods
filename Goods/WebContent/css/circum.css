@@ -1,5 +1,6 @@
 body {
-	background-image:url(../src/background/11.jpg);
+    background-image:url(../src/background/11.jpg);
+    background-attachment: fixed;
 }
 
 .circum-body {
@@ -75,6 +76,7 @@ li {
     word-break: break-all;
     word-wrap: break-word;
     overflow: hidden;
+    overflow-y: scroll;
     line-height: 2em;
     font-size: 20px;
     border: 1px solid rgba(66, 255, 66, 0);

@@ -1,147 +1,150 @@
 CREATE DATABASE sedb;
 CREATE TABLE users(
-	id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ÓÃ»§±àºÅ',
-	username VARCHAR(50) NOT NULL COMMENT 'µÇÂ¼ÕËºÅ',
-	userpass VARCHAR(50) NOT NULL COMMENT 'µÇÂ¼ÃÜÂë',
-	nickname VARCHAR(50) COMMENT 'ÓÃ»§êÇ³Æ',
-	age INT COMMENT 'ÓÃ»§ÄêÁä',
-	gender VARCHAR(5) COMMENT 'ÓÃ»§ÐÔ±ð',
-	phone VARCHAR(13) COMMENT 'ÁªÏµ·½Ê½',
-	email VARCHAR(20) COMMENT 'ÓÃ»§ÓÊÏä',
-	createTime DATETIME COMMENT '´´½¨Ê±¼ä',
-	lastLogin DATETIME COMMENT '×îºóµÇÂ¼Ê±¼ä',
-	userStatus INT COMMENT 'ÓÃ»§×´Ì¬ 0 Õý³£ 1 Ëø¶¨',
-    jurisdiction  INT COMMENT 'ÓÃ»§È¨ÏÞ'
+	id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ï¿½Ã»ï¿½ï¿½ï¿½ï¿½',
+	username VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½Â¼ï¿½Ëºï¿½',
+	userpass VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½',
+	nickname VARCHAR(50) COMMENT 'ï¿½Ã»ï¿½ï¿½Ç³ï¿½',
+	age INT COMMENT 'ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½',
+	gender VARCHAR(5) COMMENT 'ï¿½Ã»ï¿½ï¿½Ô±ï¿½',
+	phone VARCHAR(13) COMMENT 'ï¿½ï¿½Ïµï¿½ï¿½Ê½',
+	email VARCHAR(20) COMMENT 'ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½',
+	createTime DATETIME COMMENT 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
+	lastLogin DATETIME COMMENT 'ï¿½ï¿½ï¿½ï¿½Â¼Ê±ï¿½ï¿½',
+	userStatus INT COMMENT 'ï¿½Ã»ï¿½×´Ì¬ 0 ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½ï¿½',
+    jurisdiction  INT COMMENT 'ï¿½Ã»ï¿½È¨ï¿½ï¿½'
 ) DEFAULT CHARSET 'utf8';
 
 CREATE TABLE note(
-	id INT auto_increment primary key comment 'ÄÚÈÝ±àºÅ',
-    title varchar(200) not null comment '±êÌâÃû',
-    author varchar(50) not null comment '×÷ÕßÃû',
-    releasetime varchar(50) not null comment '·¢²¼Ê±¼ä',
-    pagecontect varchar(16800) not null comment '·¢²¼ÄÚÈÝ',
-    readingvolume bigint comment '·ÃÎÊ´ÎÊý'
+	id INT auto_increment primary key comment 'ï¿½ï¿½ï¿½Ý±ï¿½ï¿½',
+    title varchar(200) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    author varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    releasetime varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
+    pagecontect varchar(16800) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    readingvolume bigint comment 'ï¿½ï¿½ï¿½Ê´ï¿½ï¿½ï¿½'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE  activate(
-	activation VARCHAR(30) NOT NULL PRIMARY KEY COMMENT '¼¤»îÂë',
-	activate_type VARCHAR(50) NOT NULL COMMENT '¼¤»îÀàÐÍ',
-	activate_status INT NOT NULL DEFAULT 0 COMMENT '¼¤»î×´Ì¬ 0Î´¼¤»î 1¼¤»î '
+	activation VARCHAR(30) NOT NULL PRIMARY KEY COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	activate_type VARCHAR(50) NOT NULL COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	activate_status INT NOT NULL DEFAULT 0 COMMENT 'ï¿½ï¿½ï¿½ï¿½×´Ì¬ 0Î´ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ '
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE student_authentication(
-	student_id VARCHAR(50) NOT NULL PRIMARY KEY COMMENT 'Ñ§ÉúÑ§ºÅ',
-	student_password VARCHAR(50) NOT NULL  COMMENT 'Ñ§ÉúÃÜÂë£¬Ä¬ÈÏÉí·ÝÖ¤ºó6Î»',
-	 student_activate_status INT NOT NULL DEFAULT 0 COMMENT 'Ñ§Éú¼¤»î×´Ì¬ Ä¬ÈÏ0Î´¼¤»î 1¼¤»î'
+	student_id VARCHAR(50) NOT NULL PRIMARY KEY COMMENT 'Ñ§ï¿½ï¿½Ñ§ï¿½ï¿½',
+	student_password VARCHAR(50) NOT NULL  COMMENT 'Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½6Î»',
+	 student_activate_status INT NOT NULL DEFAULT 0 COMMENT 'Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ Ä¬ï¿½ï¿½0Î´ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE teacher_authentication(
-	teacher_id VARCHAR(50) NOT NULL PRIMARY KEY COMMENT '½ÌÊ¦¹¤ºÅ',
-	teacher_password VARCHAR(50) NOT NULL  COMMENT '½ÌÊ¦ÃÜÂë£¬Ä¬ÈÏÉí·ÝÖ¤ºó6Î»',
-	teacher_activate_status INT NOT NULL DEFAULT 0 COMMENT '½ÌÊ¦¼¤»î×´Ì¬ Ä¬ÈÏ0Î´¼¤»î 1¼¤»î'
+	teacher_id VARCHAR(50) NOT NULL PRIMARY KEY COMMENT 'ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½ï¿½',
+	teacher_password VARCHAR(50) NOT NULL  COMMENT 'ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½ë£¬Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½6Î»',
+	teacher_activate_status INT NOT NULL DEFAULT 0 COMMENT 'ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½ï¿½×´Ì¬ Ä¬ï¿½ï¿½0Î´ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE Merchant(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-    merchant_id varchar(10) not null comment 'ÉÌÆÌÎ¨Ò»±êÊ¶ºÅ',
-    name varchar(50) not null comment 'ÉÌÆÌÃû³Æ',
-    address varchar(5000) comment 'ÉÌÆÌµØÖ·',
-    phone varchar(20) comment 'ÉÌÆÌµç»°',
-    info varchar(10000) comment 'µêÆÌ½éÉÜ',
-    near int default 0 comment 'ÊÇ·ñÊÇÖÜ±ßÉÌ»§£¬0±íÊ¾ÊÇ£¬1±íÊ¾²»ÊÇ'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+    merchant_id varchar(10) not null comment 'ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½Ê¶ï¿½ï¿½',
+    name varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    address varchar(5000) comment 'ï¿½ï¿½ï¿½Ìµï¿½Ö·',
+    phone varchar(20) comment 'ï¿½ï¿½ï¿½Ìµç»°',
+    info varchar(10000) comment 'ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½',
+    near int default 0 comment 'ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ü±ï¿½ï¿½Ì»ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¾ï¿½Ç£ï¿½1ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½',
+	pic varchar(500) comment 'Í¼Æ¬'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE food(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-	merchant_id varchar(10) not null comment 'ÉÌÆÌÎ¨Ò»±êÊ¶ºÅ',
-	name varchar(2000) not null comment 'Ê³ÎïÃû³Æ',
-	price varchar(10) not null comment 'Ê³Îï¼Û¸ñ',
-	info varchar(10000) comment 'Ê³Æ·ÃèÊö'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+	merchant_id varchar(10) not null comment 'ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½Ê¶ï¿½ï¿½',
+	name varchar(2000) not null comment 'Ê³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	price varchar(10) not null comment 'Ê³ï¿½ï¿½Û¸ï¿½',
+	info varchar(10000) comment 'Ê³Æ·ï¿½ï¿½ï¿½ï¿½',
+    pic varchar(500) comment 'Í¼Æ¬'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE attractions(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-	name varchar(50) not null comment '¾°µãÃû³Æ',
-    address varchar(5000) comment '¾°µãµØÖ·',
-	price varchar(10) comment 'ÓÎÍæ¼Û¸ñ',
-	info varchar(10000) comment '¾°µã½éÉÜ'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+	name varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    address varchar(5000) comment 'ï¿½ï¿½ï¿½ï¿½ï¿½Ö·',
+	price varchar(10) comment 'ï¿½ï¿½ï¿½ï¿½Û¸ï¿½',
+	info varchar(10000) comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	pic varchar(500) comment 'Í¼Æ¬'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE LostAndFound(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-	title varchar(50) not null comment '±êÌâÃû',
-	nickname VARCHAR(50) COMMENT '·¢²¼ÕßêÇ³Æ',
-	releasetime varchar(50) not null comment '·¢²¼Ê±¼ä',
-    pagecontect varchar(10000) not null comment '·¢²¼ÄÚÈÝ',
-    solve int not null default 0 comment 'ÊÇ·ñ½â¾ö Ä¬ÈÏÎ´½â¾öÎª0 ½â¾öÎª1'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+	title varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	nickname VARCHAR(50) COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½',
+	releasetime varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
+    pagecontect varchar(10000) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    solve int not null default 0 comment 'ï¿½Ç·ï¿½ï¿½ï¿½ Ä¬ï¿½ï¿½Î´ï¿½ï¿½ï¿½Îª0 ï¿½ï¿½ï¿½Îª1'
 )DEFAULT CHARSET 'utf8';
 
 CREATE TABLE communication(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-	title varchar(100) not null comment '±êÌâÃû',
-	nickname VARCHAR(50) COMMENT '·¢²¼ÕßêÇ³Æ',
-	releasetime varchar(50) not null comment '·¢²¼Ê±¼ä',
-    pagecontect varchar(10000) not null comment '·¢²¼ÄÚÈÝ'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+	title varchar(100) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	nickname VARCHAR(50) COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½',
+	releasetime varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
+    pagecontect varchar(10000) not null comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'
 )default charset 'utf8';
 
 CREATE TABLE reply(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-	target int not null comment '»Ø¸´Ä¿±êÌûid',
-	nickname VARCHAR(50) COMMENT '»Ø¸´ÕßêÇ³Æ',
-	releasetime varchar(50) not null comment '»Ø¸´Ê±¼ä',
-    pagecontect varchar(10000) not null comment '»Ø¸´ÕßÄÚÈÝ'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+	target int not null comment 'ï¿½Ø¸ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½id',
+	nickname VARCHAR(50) COMMENT 'ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½Ç³ï¿½',
+	releasetime varchar(50) not null comment 'ï¿½Ø¸ï¿½Ê±ï¿½ï¿½',
+    pagecontect varchar(10000) not null comment 'ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'
 )default charset 'utf8';
 
 CREATE TABLE titleacademic(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-    name varchar(50) not null comment 'ÐÕÃû',
-    title varchar(1000) not null comment '±êÌâ',
-	stoptime varchar(50) not null comment '½ØÖ¹Ê±¼ä',
-	pagecontect varchar(15000) not null comment 'ÄÚÈÝ',
-	types int not null comment ' 1 ´ú±í ¾ºÈüÐÅÏ¢ 2´ú±í¿ÆÑÐÐÅÏ¢ 3´ú±í½²×ùÐÅÏ¢'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+    name varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½',
+    title varchar(1000) not null comment 'ï¿½ï¿½ï¿½ï¿½',
+	stoptime varchar(50) not null comment 'ï¿½ï¿½Ö¹Ê±ï¿½ï¿½',
+	pagecontect varchar(15000) not null comment 'ï¿½ï¿½ï¿½ï¿½',
+	types int not null comment ' 1 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ 3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢'
 )default charset 'utf8';
 
 CREATE TABLE academic(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-    mark int comment '¹ØÁªid',
-    types int not null comment ' 1 ´ú±í ¾ºÈüÐÅÏ¢ 2´ú±í¿ÆÑÐÐÅÏ¢ 3´ú±í½²×ùÐÅÏ¢',
-    announcer varchar(50) not null comment ' ·¢²¼Õß',
-    releasetime varchar(50) not null comment '·¢²¼Ê±¼ä',
-	pagecontect varchar(15000) comment '·¢²¼ÄÚÈÝ',
-	validity int not null default 1 comment 'ÓÐÐ§ÐÔ 1´ú±íÓÐÐ§ 0´ú±íÎÞÐ§'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+    mark int comment 'ï¿½ï¿½ï¿½ï¿½id',
+    types int not null comment ' 1 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ 3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢',
+    announcer varchar(50) not null comment ' ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+    releasetime varchar(50) not null comment 'ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½',
+	pagecontect varchar(15000) comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	validity int not null default 1 comment 'ï¿½ï¿½Ð§ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ 0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§'
 )default charset 'utf8';
 
 create table dependacademic(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-    mark int not null comment '¹ØÁªid',
-    description varchar(50) not null comment 'ËµÃ÷',
-    content varchar(200) not null comment 'ÄÚÈÝ'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+    mark int not null comment 'ï¿½ï¿½ï¿½ï¿½id',
+    description varchar(50) not null comment 'Ëµï¿½ï¿½',
+    content varchar(200) not null comment 'ï¿½ï¿½ï¿½ï¿½'
 )default charset 'utf8';
 
 create table application(
-	id int auto_increment primary key comment '×ÔÔö³¤id',
-    nickname varchar(50) not null comment '»Ø¸´Õß',
-    mark int not null comment '¹ØÁªid',
-     content varchar(200) not null comment 'ÄÚÈÝ'
+	id int auto_increment primary key comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id',
+    nickname varchar(50) not null comment 'ï¿½Ø¸ï¿½ï¿½ï¿½',
+    mark int not null comment 'ï¿½ï¿½ï¿½ï¿½id',
+     content varchar(200) not null comment 'ï¿½ï¿½ï¿½ï¿½'
 )default charset 'utf8';
 
 create table StudentSend(
-	table_id INT auto_increment PRIMARY KEY COMMENT '±í¸ñ±àºÅ',
-	target int not null comment '»Ø¸´Ä¿±êÌûid',
-	name varchar(100) not null comment'Ñ§ÉúÐÕÃû',
-	phone varchar(1000) not null comment'Ñ§Éúµç»°',
-	age varchar(10) not null comment 'ÄêÁä',
-	sex varchar(10) not null comment 'ÐÔ±ð',
-	content varchar(1000) not null comment'¸öÈË¼ò½é'
+	table_id INT auto_increment PRIMARY KEY COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½',
+	target int not null comment 'ï¿½Ø¸ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½id',
+	name varchar(100) not null comment'Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	phone varchar(1000) not null comment'Ñ§ï¿½ï¿½ï¿½ç»°',
+	age varchar(10) not null comment 'ï¿½ï¿½ï¿½ï¿½',
+	sex varchar(10) not null comment 'ï¿½Ô±ï¿½',
+	content varchar(1000) not null comment'ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½'
 )default charset 'utf8';
 
 CREATE TABLE form(
-	table_id INT auto_increment PRIMARY KEY COMMENT '±í¸ñ±àºÅ',
-	title varchar(100) not null comment '±êÌâ',
-	shopname varchar(50) not null comment 'ÉÌ»§Ãû',
-    position varchar(50) not null comment 'ÉÌ»§ÕÐÆ¸Ö°Î»',
-    address varchar(200) not null comment 'µØÖ·',
-    linkman varchar(20) not null comment 'ÁªÏµÈË',
-   	phone varchar(20) not null comment 'µç»°',
-    content varchar(10000) comment 'ÉÌ»§¼æÖ°ÐÅÏ¢'
+	table_id INT auto_increment PRIMARY KEY COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½',
+	title varchar(100) not null comment 'ï¿½ï¿½ï¿½ï¿½',
+	shopname varchar(50) not null comment 'ï¿½Ì»ï¿½ï¿½ï¿½',
+    position varchar(50) not null comment 'ï¿½Ì»ï¿½ï¿½ï¿½Æ¸Ö°Î»',
+    address varchar(200) not null comment 'ï¿½ï¿½Ö·',
+    linkman varchar(20) not null comment 'ï¿½ï¿½Ïµï¿½ï¿½',
+   	phone varchar(20) not null comment 'ï¿½ç»°',
+    content varchar(10000) comment 'ï¿½Ì»ï¿½ï¿½ï¿½Ö°ï¿½ï¿½Ï¢'
 )DEFAULT CHARSET 'utf8';

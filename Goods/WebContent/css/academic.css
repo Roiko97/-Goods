@@ -1,3 +1,8 @@
+body{
+    background-image: url(../src/background/88.jpg);
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
 .left-por {
     background-color: white;
 }

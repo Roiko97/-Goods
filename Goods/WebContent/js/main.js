@@ -2,6 +2,7 @@ var news;
 var circum;
 var bussness;
 var communication;
+var work;
 var academic;
 var flag;
 //Title标题
@@ -11,6 +12,13 @@ var title = (function getTitle() {
 /*主要*/
 function start() {
         createNav('nav');
+        $('.modal-body').bind("keydown",function(e){
+            let theEvent = e || window.event;
+            let code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+            if(code == 13){
+                login();
+            }
+        });
         createCode();
         checkCookie();
         init(title);
@@ -49,6 +57,11 @@ function init(title) {
                 communication.init();
                 break;
             }
+            case "work":{
+                work = new workObj();
+                work.init();
+                break;
+            }
         case "academic":
             {
                 academic = new academicObj();
@@ -58,7 +71,6 @@ function init(title) {
     }
 
 }
-
 function communication_1() {
     setCookie('sort', true, 1);
     let url = 'communication';

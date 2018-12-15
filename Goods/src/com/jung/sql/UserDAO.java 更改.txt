@@ -1,0 +1,73 @@
+//---------------------获取商家招聘信息    
+    public List getUser() {
+    	List<Table> list = new ArrayList<Table>();
+    	try {
+    		list = getSqlSession().selectList("getUser");
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    
+    public List getStudent(Table user) {
+    	List<StudentSend> list = new ArrayList<>();
+    	try {
+    		list = getSqlSession().selectList("getStudent",user);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    
+    public List<Send> queryUS(Send user){
+    	List<Send> list = new ArrayList<Send>();
+    	try {
+    		list = getSqlSession().selectList("queryUserSend",user);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+		return list;
+    }
+
+    public List<StudentSend> querySS(Send user){
+    	List<StudentSend> list = new ArrayList<>();
+    	try {
+    		list = getSqlSession().selectList("queryStudentSend",user);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+		return list;
+    }
+
+    public List<StudentSend> getStudentSendById(String id){
+    	List<StudentSend> list = new ArrayList<>();
+    	try {
+    		list = getSqlSession().selectList("getStudentSendById",id);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }
+    
+    public List<Send> getSendByTarget(int target) {
+    	List<Send> list = new ArrayList<>();
+    	//Send send = new Send();
+    	try {
+    		list = getSqlSession().selectList("getSendByTarget",target);
+    	}catch(Exception e) {
+    		System.out.println(e.getMessage());
+    	}finally {
+    		sqlSession.close();
+    	}
+    	return list;
+    }

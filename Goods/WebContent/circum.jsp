@@ -31,7 +31,7 @@
     <div class="circum-body row">
         <div class="sub-nav">
             <div class="btn-group btn-lg">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
                     分类<span class="glyphicon glyphicon-th-list"></span>
                 </button>
                 <ul class="dropdown-menu" role="leftmenu">
@@ -48,7 +48,7 @@
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-   target="#carousel-example-generic" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" id="content" role="listbox">
             </div>
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <img src="src/Logo.png" class="img-responsive" alt="LOGO">
+                                <img src="src/LOGO/Logo.png" class="img-responsive" alt="LOGO">
                             </div>
                         </div>
                         <div class="row">

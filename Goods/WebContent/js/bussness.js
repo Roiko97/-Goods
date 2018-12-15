@@ -37,11 +37,15 @@ bussessObj.prototype.showObj = function () {
 }
 bussessObj.prototype.createItem = function (x) {
     var div_1 = document.createElement('div');
-    div_1.setAttribute('class', 'flex-item item-img-one item-img');
+    div_1.setAttribute('class', 'flex-item item-img');
+    var img = document.createElement('img');
+    img.setAttribute('src','123');
+    
 
-    var div_2_1 = document.createElement('div');
+    var img = document.createElement('img');
     var div_2_2 = document.createElement('div');
-    div_2_1.setAttribute('class', 'flex-item-null');
+    img.setAttribute('class', 'flex-item-null');
+    img.setAttribute('src',this.nearMerchant[x].pic);
     div_2_2.setAttribute('class', 'flex-item-span');
 
     var span_3_1 = document.createElement('span');
@@ -59,7 +63,7 @@ bussessObj.prototype.createItem = function (x) {
     div_2_2.appendChild(span_3_1);
     div_2_2.appendChild(span_3_2);
     div_2_2.appendChild(span_3_3);
-    div_1.appendChild(div_2_1);
+    div_1.appendChild(img);
     div_1.appendChild(div_2_2);
 
     var main = document.getElementsByClassName('flex-content');

@@ -34,18 +34,16 @@
         <div class="col-md-8">
             <div class="jSlider col-md-6 col-md-offset-3" id="slider1" data-loop="true">
                 <div>
-                    <img src="images/photo1.jpg" alt="sample photo">
+                    <img src="src/academic-image/xueshu1.PNG" alt="sample photo">
                 </div>
                 <div>
-                    <img src="academic-images/photo1.jpg" alt="sample photo">
-                    <div class="sub-content-sample">
-                    </div>
+                    <img src="src/academic-image/xueshu2.PNG" alt="sample photo">
                 </div>
                 <div>
-                    <img src="academic-images/photo2.jpg" alt="sample photo">
+                    <img src="src/academic-image/xueshu3.PNG" alt="sample photo">
                 </div>
                 <div>
-                    <img src="academic-images/photo3.jpg" alt="sample photo">
+                    <img src="src/academic-image/xueshu4.PNG" alt="sample photo">
                 </div>
             </div>
         </div>
@@ -54,14 +52,8 @@
     <div class="row" style="margin-right: 15px;">
         <div class="left-part col-md-2 col-md-offset-2">
             <ul class="list-group">
-                <li class="list-group-item"><span class="badge">热</span><a href="#">123</a></li>
-                <li class="list-group-item"><span class="badge">新</span><a href="#">123</a></li>
-                <li class="list-group-item"><a href="#">123</a></li>
-                <li class="list-group-item"><a href="#">123</a></li>
-                <li class="list-group-item"><a href="#">123</a></li>
-                <li class="list-group-item"><a href="#">123</a></li>
-                <li class="list-group-item"><a href="#">123</a></li>
-                <li class="list-group-item"><a href="#">123</a></li>
+                <li class="list-group-item"><span class="badge">热</span><a href="index.jsp">学校各党支部深入学习习近平总书记视察广东重要讲话精神</a></li>
+                <li class="list-group-item"><span class="badge">新</span><a href="circum.jsp">中山詹园</a></li>
             </ul>
         </div>
         <div class="right-part col-md-6">
@@ -132,7 +124,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="src/Logo.png" class="img-responsive" alt="LOGO">
+                            <img src="src/LOGO/Logo.png" class="img-responsive" alt="LOGO">
                         </div>
                     </div>
                     <div class="row">
