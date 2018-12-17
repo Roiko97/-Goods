@@ -126,7 +126,7 @@ circumObj.prototype.createNode = function (count) {
     var post_name_a = $('<a></a>');
 
     post_name_a.attr('href', "#");
-    post_name_a.addClass("h2 pull-right");
+    post_name_a.addClass("h4 pull-right");
     post_name_div.addClass("post-name");
 
     post_name_a.appendTo(post_name_div);
